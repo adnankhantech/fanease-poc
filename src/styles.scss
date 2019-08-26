@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+// sticks the footer at the bottom of the page
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+
+* {
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+}
+
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+app-footer, .push {
+  // .push must be the same height as footer
+  height: 50px;
+}
+
+.one-nav-pad {
+  padding-top: 66px;
+}
+
+.video-js{
+  height: 60% !important;
+  width: 100% !important;
+}
+
+.navbar-brand img{
+  height: 25px !important;
+}
+
+footer{
+  background-color: black !important;
+}
