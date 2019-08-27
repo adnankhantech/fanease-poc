@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     `<div class="rectangle">
     <img  class="close" src="/assets/images/group-37.png">
     <div class="image-block">
-      <img src="/assets/images/i-logo.png">
+      <img src="/assets/images/i-logo-3x.png">
     </div>
     <div class="description">
       <img src="/assets/images/shape.png"><br>
@@ -48,11 +48,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
             end: 'playing',
             align: 'top-right',
             class: 'overlay-first'
-        }, {
-            start: 'pause',
-            content: overlay_content_second,
-            end: 'playing',
-            align: 'bottom-right'
         }]
     });
   }
