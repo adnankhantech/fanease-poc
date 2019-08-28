@@ -14,7 +14,7 @@ h1 {
 
 }
 
-.rectangle {
+.box1 .rectangle {
   position: relative;
   width: 249px;
   height: 94px;
@@ -27,14 +27,14 @@ h1 {
   width: 249px;
 }
 
-.close {
+.box1 .close {
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: pointer;
 }
 
-.image-block {
+.box1 .image-block {
   /* display: inline-block;
   position: absolute;
   top: 25px;
@@ -42,29 +42,29 @@ h1 {
   float: left;
 }
 
-.description {
+.box1 .description {
   text-align: center;
   float: left;
   padding-left: 20px;
   width: 50%;
 }
 
-.description hr {
+.box1 .description hr {
   width: 49px;
   opacity: 0.2;
   border: solid 1px #ffffff;
 }
 
-.description p {
+.box1 .description p {
   margin: 0;
   color: #ffffff;
 }
 
-.description img {
+.box1 .description img {
   margin-top: 5px;
 }
 
-.M6-Driver {
+.box1 .M6-Driver {
   font-family: Avenir;
   font-size: 17.6px;
   font-weight: 500;
@@ -76,7 +76,7 @@ h1 {
   margin: 0;
 }
 
-.view {
+.box1 .view {
   width: 107.7px;
   height: 20.9px;
   border-radius: 3.3px;
@@ -88,7 +88,114 @@ h1 {
   cursor: pointer;
 }
 
-.title {
+
+.box2 .rectangle {
+  position: relative;
+  width: 249px;
+  height: 114px;
+  opacity: 0.8;
+  border-radius: 10px;
+  box-shadow: -9px 2px 24px 0 rgba(0, 0, 0, 0.5);
+  background-color: #37787c;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.box2 .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.box2 .image-block {
+  /* display: inline-block;
+  position: absolute;
+  top: 25px;
+  left: 20px; */
+  float: left;
+}
+
+.box2 .description {
+  float: left;
+  padding-left: 20px;
+}
+
+.box2 .description p {
+  margin: 0;
+  color: #ffffff;
+}
+
+.box2 .description img {
+  margin-top: 5px;
+}
+
+.box2 .M6-Driver {
+  font-family: Avenir;
+  font-size: 17.6px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+  margin: 0;
+}
+
+.box2 .view {
+  width: 107.7px;
+  height: 20.9px;
+  border-radius: 3.3px;
+  border: solid 1.1px #f5f5f5;
+  color: #fff;
+  font-family: Avenir;
+  font-size: 13.2px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.box3 .rectangle {
+  position: relative;
+  width: 269px;
+  height: 114px;
+  opacity: 0.8;
+  border-radius: 10px;
+  box-shadow: -9px 2px 24px 0 rgba(0, 0, 0, 0.5);
+  background-color: #37787c;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.box3 .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.box3 .image-block {
+  /* display: inline-block;
+  position: absolute;
+  top: 25px;
+  left: 20px; */
+  float: left;
+}
+
+.box3 .description {
+  float: left;
+  padding-left: 20px;
+}
+
+.box3 .description p {
+  margin: 0;
+  color: #ffffff;
+}
+
+.box3 .description img {
+  margin-top: 5px;
+}
+
+.box3 .title {
   font-family: Avenir;
   font-size: 13.6px;
   font-weight: 500;
@@ -98,6 +205,47 @@ h1 {
   letter-spacing: normal;
   color: #ffffff;
   margin: 0;
+}
+
+.box3 .view {
+  width: 107.7px;
+  height: 20.9px;
+  border-radius: 3.3px;
+  border: solid 1.1px #f5f5f5;
+  color: #fff;
+  font-family: Avenir;
+  font-size: 13.2px;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.box4 .rectangle {
+  position: relative;
+  width: 489px;
+  height: 488px;
+  opacity: 0.8;
+  border-radius: 9px;
+  box-shadow: -8px 2px 22px 0 rgba(0, 0, 0, 0.5);
+  background-color: #37787c;
+}
+
+.box4 .img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.box4 .img-wrap img {
+  width: 462px;
+  height: 463px;
+}
+
+.box4 .close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
