@@ -111,9 +111,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [{
-          start: 19,
+          start: 1,
           content: templateObj.overlay_content_first,
-          end: 55,
+          end: 5,
           align: 'top-right'
       },
       {
@@ -138,12 +138,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
         {
-          start: 19,
+          start: 3,
           content: templateObj.overlay_content_first,
-          end: 55,
+          end: 'playing',
           align: 'top-right'
       },{
-          start: 1,
+          start: 2,
           content: templateObj.overlay_content_fourth,
           end: 'playing',
           align: 'top-right'
