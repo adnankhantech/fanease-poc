@@ -28,8 +28,7 @@ app-footer, .push {
 }
 
 .video-js{
-  height: 60% !important;
-  width: 100% !important;
+  height: 535px !important;
 }
 
 .navbar-brand img{
@@ -43,4 +42,5 @@ footer{
 .vjs-overlay-background{
   padding: 0 !important;
   width: fit-content !important;
+  border-radius: 10px !important;
 }

@@ -1,5 +1,6 @@
-import {Component, OnInit, AfterViewInit, OnDestroy, ElementRef} from '@angular/core';
+import {Component, OnInit, AfterViewInit, OnDestroy, ElementRef, Renderer2} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
+import { $ } from 'protractor';
 
 declare let videojs: any;
 
@@ -12,7 +13,9 @@ declare let videojs: any;
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private videoJSplayer: any;
   templateObj:any;
-  constructor(private elementRef:ElementRef) { 
+  show:boolean=true;
+
+  constructor(private elementRef:ElementRef, private renderer: Renderer2) { 
    }
 
   ngOnInit() {}   
@@ -24,16 +27,23 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   generateClickEvent(){
-    this.videoJSplayer.on('play' , ()=>{
-      let el =  this.elementRef.nativeElement.querySelector('.rectangle');
+    this.videoJSplayer.on('progress' , ()=>{
+      const el =  this.elementRef.nativeElement.querySelector('.box1 .rectangle');
       if(el){
         el.addEventListener('click', this.viewDetail.bind(this));
-
       }
+
+      let element_first = this.elementRef.nativeElement.querySelector('.box1 .close');
+      element_first.addEventListener('click', ()=>{
+        
+        this.renderer.setStyle(el, 'visiblity', 'hidden');
+      })
+      
     })
   }
 
   generateTemplateForOverlay() {
+    console.log(this.show);
     this.templateObj = {
       overlay_content_first: `<div class="box1">
       <div class="rectangle">
@@ -101,9 +111,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [{
-          start: 1,
+          start: 19,
           content: templateObj.overlay_content_first,
-          end: 5,
+          end: 55,
           align: 'top-right'
       },
       {
@@ -117,20 +127,40 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       content: templateObj.overlay_content_third,
       end: 15,
       align: 'bottom-left'
-    },
-    {
-      start: 15,
-      content: templateObj.overlay_content_fourth,
-      end: 'playing',
-      align: 'top-right'
-    },
-    ]
+    }]
   });
   }
 
   viewDetail(){
-    alert(1);
+    let templateObj = this.generateTemplateForOverlay();
+    
+    this.videoJSplayer.overlay({
+      debug: true,
+      overlays: [
+        {
+          start: 19,
+          content: templateObj.overlay_content_first,
+          end: 55,
+          align: 'top-right'
+      },{
+          start: 1,
+          content: templateObj.overlay_content_fourth,
+          end: 'playing',
+          align: 'top-right'
+      }]
+    })
+
+    
+    let el = this.elementRef.nativeElement.querySelector('.box4 .close');
+    const element_first = this.elementRef.nativeElement.querySelector('.box1');
+    
+    if (el){
+      el.addEventListener('click', ()=>{
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.box4'), 'display','none');
+      })
+    }
   }
+
   ngOnDestroy() {
     this.videoJSplayer.dispose();
   }

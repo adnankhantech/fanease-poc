@@ -221,8 +221,8 @@ h1 {
 
 .box4 .rectangle {
   position: relative;
-  width: 489px;
-  height: 488px;
+  width: 450px;
+  height: 430px;
   opacity: 0.8;
   border-radius: 9px;
   box-shadow: -8px 2px 22px 0 rgba(0, 0, 0, 0.5);
@@ -237,8 +237,8 @@ h1 {
 }
 
 .box4 .img-wrap img {
-  width: 462px;
-  height: 463px;
+  width: 430px;
+  height: 410px;
 }
 
 .box4 .close {
@@ -246,6 +246,12 @@ h1 {
   top: 25px;
   right: 25px;
   cursor: pointer;
+  background-color: black;
+}
+
+.video-section{
+  width: 952px !important;
+  padding-top: 15px !important;
 }
 
 @media (max-width: 768px) {
