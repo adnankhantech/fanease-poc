@@ -183,6 +183,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     
     this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
   }
+
   viewDetailAdTwo(){
     let templateObj = this.generateTemplateForOverlay();
     
@@ -215,6 +216,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
 
   }
+  
   viewDetailAdOne(){
     let templateObj = this.generateTemplateForOverlay();
     
