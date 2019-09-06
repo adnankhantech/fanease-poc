@@ -210,6 +210,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }]
     })
     this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
+    this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
     this.generateDynamicEventsBasedonElement('.box5', '.box5 .close');
     
     this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
@@ -250,6 +251,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }]
     })
     this.generateDynamicEventsBasedonElement('.box1 .rectangle', '.box1 .close');
+    this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
+    this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
     this.generateDynamicEventsBasedonElement('.box4', '.box4 .close');
     this.elementRef.nativeElement.querySelector('.description').addEventListener('click', this.viewDetailAdOne.bind(this));
     this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
