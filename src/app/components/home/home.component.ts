@@ -10,6 +10,7 @@ declare let videojs: any;
   styleUrls: ['./home.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private videoJSplayer: any;
   templateObj:any;
@@ -28,8 +29,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showModalPopup(){
     this.showModal = true;
-    this.generateDynamicEventsBasedonElement('.modal', '.header-block .close');
   }
+
   generateClickEvent(){
     this.videoJSplayer.on('play' , ()=>{
       this.generateDynamicEventsBasedonElement('.box1 .rectangle', '.box1 .close');
@@ -153,7 +154,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     {
       start: 15,
       content: templateObj.overlay_content_third,
-      end: 20,
+      end: 35,
       align: 'bottom-left'
     }]
     });
@@ -168,7 +169,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         {
           start: 15,
           content: templateObj.overlay_content_third,
-          end: 25,
+          end: 35,
           align: 'bottom-left'
       },
         {
@@ -205,7 +206,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       {
         start: 20,
         content: templateObj.overlay_content_third,
-        end: 25,
+        end: 40,
         align: 'bottom-left'
       }]
     })
