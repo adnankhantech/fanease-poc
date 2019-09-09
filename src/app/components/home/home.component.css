@@ -1,6 +1,6 @@
 .wrapper {
   /* background: linear-gradient(rgba(252,92,125,.5),rgba(106,130,251,.5)), url("/assets/images/mountain.jpg") no-repeat center center; */
-  height: calc(100vh - 50px);
+  /* height: calc(100vh - 50px); */
   min-height: 100%;
   min-width: 100%;
   background-size: cover;

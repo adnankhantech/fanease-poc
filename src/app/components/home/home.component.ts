@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, OnDestroy, ElementRef, Renderer2} from '@angular/core';
+import {Component, OnInit, AfterViewInit, OnDestroy, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { $ } from 'protractor';
 
@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private videoJSplayer: any;
   templateObj:any;
   showModal:boolean=false;
+  @ViewChild('closeBtn') closeBtn: ElementRef;
 
   constructor(private elementRef:ElementRef, private renderer: Renderer2) { 
    }
@@ -31,6 +32,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.showModal = true;
   }
 
+  closeModal(event){
+    this.closeBtn.nativeElement.click();
+  }
+  
   generateClickEvent(){
     this.videoJSplayer.on('play' , ()=>{
       this.generateDynamicEventsBasedonElement('.box1 .rectangle', '.box1 .close');
@@ -114,9 +119,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       </div>`,
       overlay_content_fifth: `<div class="box5">
       <div class="rectangle">
-          <img class="close" src="/assets/images/group-37@2x.png">
+          <div class="close" style="top: 20px;right:24px;">
+          <i class="fa fa-times" aria-hidden="true"></i></div>
           <div class="img-wrap">
-          <a href="https://www.taylormadegolf.com/M6-Driver/DW-AL197.html?cgid=taylormade-drivers-M5-M6&lang=default#lang=default&start=3&" target="_blank">
+              <a href="https://www.taylormadegolf.com/M6-Driver/DW-AL197.html?cgid=taylormade-drivers-M5-M6&lang=default#lang=default&start=3&" target="_blank">
               <img src="/assets/images/box5@3x.png">
           </div>
       </div>
