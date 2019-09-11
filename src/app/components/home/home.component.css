@@ -223,7 +223,7 @@ h1 {
   position: relative;
   width: 450px;
   height: 430px;
-  opacity: 0.8;
+  opacity: 0.97;
   border-radius: 9px;
   box-shadow: -8px 2px 22px 0 rgba(0, 0, 0, 0.5);
   background-color: #37787c;
@@ -264,8 +264,8 @@ h1 {
 .box5 .rectangle {
   position: relative;
   width: 489px;
-  height: 488px;
-  opacity: 0.8;
+  height: 496px;
+  opacity: 0.97;
   border-radius: 9px;
   box-shadow: -8px 2px 22px 0 rgba(0, 0, 0, 0.5);
   background-color: #37787c;
@@ -293,12 +293,15 @@ h1 {
   position: relative;
   width: 577px;
   height: 427px;
-  /* opacity: 0.8; */
+  /* opacity: 0.97; */
   border-radius: 9px;
   box-shadow: -8px 2px 22px 0 rgba(0, 0, 0, 0.5);
   background-color: #ffffff;
 }
 
+.video-js .vjs-overlay-bottom-left {
+    bottom: 10.5em !important;
+ }
 .header-block .close {
   float: right;
   margin-top: 10px;

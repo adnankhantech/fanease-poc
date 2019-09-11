@@ -119,7 +119,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       </div>`,
       overlay_content_fifth: `<div class="box5">
       <div class="rectangle">
-          <div class="close" style="top: 20px;right:24px;">
+          <div class="close" style="top: 25px;right:23px;">
           <i class="fa fa-times" aria-hidden="true"></i></div>
           <div class="img-wrap">
               <a href="https://www.taylormadegolf.com/M6-Driver/DW-AL197.html?cgid=taylormade-drivers-M5-M6&lang=default#lang=default&start=3&" target="_blank">
