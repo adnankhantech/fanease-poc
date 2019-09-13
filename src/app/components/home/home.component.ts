@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           <h2 class="title">
               NIKE GOLF SHIRT
           </h2>
-          <p>$ 499.99</p>
+          <p>$55.00 </p>
           <img src="/assets/images/nike-logo.png" style="padding-bottom:10px;"><br>
           <a class="view">
             View Product >
@@ -146,21 +146,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [{
-          start: 1,
+          start: 19,
           content: templateObj.overlay_content_first,
-          end: 5,
+          end: 55,
           align: 'top-right'
       },
       {
-        start: 6,
+        start: 70,
         content: templateObj.overlay_content_second,
-        end: 10,
+        end: 90,
         align: 'bottom-right'
     },
     {
-      start: 15,
+      start: 145,
       content: templateObj.overlay_content_third,
-      end: 35,
+      end: 166,
       align: 'bottom-left'
     }]
     });
@@ -173,13 +173,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
         {
-          start: 15,
+          start: 145,
           content: templateObj.overlay_content_third,
-          end: 35,
+          end: 166,
           align: 'bottom-left'
       },
         {
-        start: 2,
+        start: 145,
         content: templateObj.overlay_content_sixth,
         end: 'playing',
         align: 'top-left'
@@ -198,21 +198,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
         {
-          start: 2,
+          start: 70,
           content: templateObj.overlay_content_second,
-          end: 19,
+          end: 90,
           align: 'bottom-right'
       },
         {
-        start: 2,
+        start: 70,
         content: templateObj.overlay_content_fifth,
         end: 'playing',
         align: 'top-right'
       },
       {
-        start: 20,
+        start: 145,
         content: templateObj.overlay_content_third,
-        end: 40,
+        end: 166,
         align: 'bottom-left'
       }]
     })
@@ -232,28 +232,28 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
         {
-          start: 1,
+          start: 19,
           content: templateObj.overlay_content_first,
-          end: 10,
+          end: 55,
           align: 'top-right'
       },
         {
-        start: 1,
+        start: 19,
         content: templateObj.overlay_content_fourth,
         end: 'playing',
         align: 'top-right',
         class: 'overlay-fourth'
       },
       {
-        start: 10,
+        start: 70,
         content: templateObj.overlay_content_second,
-        end: 23,
+        end: 90,
         align: 'bottom-right'
       },
       {
-        start: 24,
+        start: 145,
         content: templateObj.overlay_content_third,
-        end: 30,
+        end: 166,
         align: 'bottom-left'
       }]
     })
