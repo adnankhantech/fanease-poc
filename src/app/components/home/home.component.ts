@@ -203,7 +203,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           end: 90,
           align: 'bottom-right'
       },
-        {
+      {
         start: 70,
         content: templateObj.overlay_content_fifth,
         end: 'playing',

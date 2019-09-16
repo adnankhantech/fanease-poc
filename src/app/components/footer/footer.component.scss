@@ -2,21 +2,18 @@
   width: 100%;
   height: 330px;
   background-color: #000000;
-  margin-top: 15px;
 }
 
 .poc-footer .logo-div {
-  position: relative;
-  display: inline-block;
-  width: 40%;
+  /* position: relative;
+  display: inline-block; */
   height: 100%;
   border-right: solid 1px #333333;
 }
 
 .poc-footer .menu-div {
-  position: absolute;
-  display: inline-block;
-  width: 59%;
+  /* position: absolute;
+  display: inline-block; */
   height: 100%;
 }
 
@@ -28,7 +25,7 @@
 
 .poc-footer .logo-div {
   text-align: center;
-  float: left;
+  /* float: left; */
 }
 
 .poc-footer .logo-div hr {
@@ -81,11 +78,9 @@
   font-family: Avenir;
   font-size: 13px;
 }
-
 .poc-footer .social-media-div {
   float: left;
   padding-left: 209px;
-  margin-top: 15px;
 }
 
 .poc-footer .social-media-div ul li {
@@ -98,7 +93,29 @@
 }
 
 .poc-footer .copyright-div {
-  float: right;
+  /* float: right; */
+  text-align: right;
   color: #9d9c9c;
   padding: 25px;
+}
+@media screen and (max-width: 631px) {
+  .poc-footer .right-content ul li {
+      display: block;
+  }
+  .poc-footer .social-media-div ul{
+      display: flex;
+      justify-content: center;
+      padding: 0;
+  }
+  .poc-footer .social-media-div{
+      float: left;
+      width: 100%;
+      padding-left: 0;
+      text-align: center;
+  }
+  .poc-footer .copyright-div{
+      text-align: center;
+      color: #9d9c9c;
+      padding: 25px;
+  }
 }

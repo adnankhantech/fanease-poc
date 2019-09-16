@@ -459,3 +459,153 @@ h1 {
 @media (max-width: 768px) {
   font-size: 30px;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .box1 .rectangle {
+      width: 125px;
+      height: 65px;
+  }
+  .box1 .close {
+      width: 10px;
+  }
+  .image-block img {
+      height: 42px;
+  }
+  .box1 .description {
+      padding-left: 10px;
+  }
+  .box1 .description img {
+      height: 20px;
+  }
+  .box1 .description hr {
+      margin-top: 2px;
+      margin-bottom: 2px;
+  }
+  .box1 .description p {
+      font-size: 12px;
+  }
+  .box2 .rectangle {
+    width: 145px;
+    height: 75px;
+    padding: 5px;
+}
+.box2 .close {
+    width: 10px;
+}
+.box2 .image-block img {
+    height: 42px;
+}
+.box2 .description {
+    padding-left: 10px;
+}
+.box2 .M6-Driver {
+    font-size: 12px;
+}
+.box2 .description img {
+    width: 40px;
+    margin-top: 2px;
+}
+.box2 .description hr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.box2 .description p {
+    font-size: 14px;
+}
+.box2 .view {
+    padding: 2px;
+    font-size: 11px;
+}
+.box3 .rectangle {
+  width: 170px;
+  height: 80px;
+  padding: 5px;
+}
+.box3 .close {
+  width: 10px;
+}
+.box3 .image-block img {
+  height: 42px;
+}
+.box3 .description {
+  padding-left: 10px;
+}
+.box3 .title {
+  font-size: 11px;
+}
+.box3 .description img {
+  width: 35px;
+  margin-top: 2px;
+}
+.box3 .description hr {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.box3 .description p {
+  font-size: 13px;
+}
+.box3 .view {
+  padding: 2px;
+  font-size: 11px;
+}
+
+.box4 .rectangle {
+  width: 189px;
+  height: 188px;
+}
+.box4 .img-wrap img {
+  width: 172px;
+  height: 173px;
+}
+
+.box5 .rectangle {
+  width: 189px;
+  height: 188px;
+}
+.box5 .img-wrap img {
+  width: 172px;
+  height: 173px;
+}
+
+.box6 .rectangle {
+  width: 377px;
+  height: fit-content;
+}
+.box6 .header-block {
+  height: 44px;
+  width: 100%;
+}
+.box6 .header-block p {
+  left: 10px;
+}
+.Share-a-link {
+  font-size: 24px;
+}
+.box6 .close {
+  top: 50%;
+  right: 15px;
+  transform: translate(-50%, -50%);
+}
+.box6 .media-icons {
+  width: 100%;
+  padding: 5px 12px;
+}
+.box6 .media-icons img {
+  margin-right: 20px;
+  width: 40px;
+}
+.box6 .content-area {
+  width: 100%;
+  height: 95px;
+}
+.box6 .iframe-width560 {
+  height: 95px;
+  font-size: 12px;
+}
+.box6 .copy-link {
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+}
+
+}
