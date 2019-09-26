@@ -42,12 +42,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
       this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
 
-      if(window.innerWidth <= 480){
-        this.elementRef.nativeElement.querySelector('.image-block').addEventListener('click', this.viewDetailAdOne.bind(this));
-      }
-      else{
-        this.elementRef.nativeElement.querySelector('.description').addEventListener('click', this.viewDetailAdOne.bind(this));
-      }
+
+      this.elementRef.nativeElement.querySelector('.description').addEventListener('click', this.viewDetailAdOne.bind(this));
       this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
       this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
     })
@@ -70,8 +66,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     let overlay_content_first;
     let overlay_content_second;
     let overlay_content_third;
-    let overlay_content_fourth;
-
     if(window.innerWidth <= 480){
       overlay_content_first =  `
         <div class="box1">
@@ -81,7 +75,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           <img src="/assets/images/i-logo-3x.png" style="width:50px;">
         </div>
         </div>
-        </div>`
+        </div>`,
         overlay_content_second = `<div class="box2">
         <div class="rectangle ">
           <img class="close" src="/assets/images/group-37.png">
@@ -94,7 +88,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           </a>
         </div>
       </div>
-      </div>`
+      </div>`,
       overlay_content_third=`<div class="box3">
       <div class="rectangle">
         <img class="close" src="/assets/images/group-37.png">
@@ -110,11 +104,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         </div>
       </div>
       </div>`
-      overlay_content_fourth =  `<div class="box4" style="margin-top: -15px;">
-      <div class="close">
-      <i class="fa fa-times" aria-hidden="true"></i></div>
-      <img src="/assets/images/iphone-detail-ad1.png">
-    </div>`
     }
     else{
       overlay_content_first = `<div class="box1">
@@ -129,7 +118,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           <p>25 &#8451;</p>
         </div>
         </div>
-        </div>`
+        </div>`,
         overlay_content_second=`<div class="box2">
         <div class="rectangle ">
           <img class="close" src="/assets/images/group-37.png">
@@ -147,7 +136,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           </a>
         </div>
       </div>
-      </div>`
+      </div>`,
       overlay_content_third=`<div class="box3">
       <div class="rectangle">
         <img class="close" src="/assets/images/group-37.png">
@@ -166,17 +155,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         </div>
       </div>
       </div>`
-      overlay_content_fourth =  `<div class="box4" style="margin-top: -32px;">
-      <div class="close">
-      <i class="fa fa-times" aria-hidden="true"></i></div>
-      <img src="/assets/images/detail-ad1.png" class="detail-image">
-    </div>`
     }
     this.templateObj = {
       overlay_content_first: overlay_content_first,
       overlay_content_second: overlay_content_second,
       overlay_content_third: overlay_content_third,
-      overlay_content_fourth: overlay_content_fourth,
+      overlay_content_fourth: `<div class="box4" style="margin-top: -32px;">
+        <div class="close">
+        <i class="fa fa-times" aria-hidden="true"></i></div>
+        <img src="/assets/images/detail-ad1.png">
+      </div>`,
       overlay_content_fifth: `<div class="box5">
       <div class="rectangle">
       <div class="close">
@@ -340,13 +328,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
     this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
     this.generateDynamicEventsBasedonElement('.box4', '.box4 .close');
-
-    if(window.innerWidth <= 480){
-      this.elementRef.nativeElement.querySelector('.image-block').addEventListener('click', this.viewDetailAdOne.bind(this));
-    }
-    else{
-      this.elementRef.nativeElement.querySelector('.description').addEventListener('click', this.viewDetailAdOne.bind(this));
-    }
+    this.elementRef.nativeElement.querySelector('.description').addEventListener('click', this.viewDetailAdOne.bind(this));
     this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
     this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
     let el = this.elementRef.nativeElement.querySelector(".overlay-fourth");
