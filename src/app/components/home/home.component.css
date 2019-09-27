@@ -814,3 +814,8 @@ h1 {
     height: 560px !important;
   }
 }
+@media (min-width: 576px) and (max-width: 991px) {
+  .container{
+    padding: 0px 30px;
+  }
+}

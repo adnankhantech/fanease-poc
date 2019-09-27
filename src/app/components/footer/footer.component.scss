@@ -1,121 +1,141 @@
-.poc-footer .footer-rectangle {
-  width: 100%;
-  height: 330px;
-  background-color: #000000;
+.container {
+  max-width: 900px;
 }
 
-.poc-footer .logo-div {
-  /* position: relative;
-  display: inline-block; */
-  height: 100%;
-  border-right: solid 1px #333333;
+.videoDescription{
+  padding: 20px 0px 5px 0px;
 }
-
-.poc-footer .menu-div {
-  /* position: absolute;
-  display: inline-block; */
-  height: 100%;
+.videoDescription h4{
+  font-size: 16px;
+  font-weight: 900;
+  color: #656565;
 }
-
-.poc-footer .main-div {
-  height: 260px;
-  position: relative;
-  border-bottom: solid 1px #333333;
-}
-
-.poc-footer .logo-div {
-  text-align: center;
-  /* float: left; */
-}
-
-.poc-footer .logo-div hr {
-  width: 169px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #9d9797;
-}
-
-.poc-footer .logo-div img {
-  width: 169px;
-}
-
-.poc-footer .left-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  flex-flow: column;
-}
-
-.poc-footer .left-content p {
-  width: 251px;
-  opacity: 0.4;
-  height: 100px;
-  color: #fff;
+.videoDescription p{
+  color: #8b8b8b;
+  padding: 0;
   margin: 0;
-  text-align: justify;
 }
-
-.poc-footer .right-content {
-  color: #fff;
-  text-align: center;
+.videoButtons{
+  padding-bottom: 15px;
+}
+.videoButtons button{
+  font-size: 14px;
+  border-radius: 6.4px;
+  border: solid 0.6px #dcdcdc;
+  background-color: #fafafa;
+  color: #656565;
+}
+.borderTB{
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 30px 0px;
+}
+.borderTB .d-flex{
+  border-right: 1px solid rgba(0,0,0,0.1);;
+}
+.borderTB img{
+  padding-right: 20px;
+}
+.imgDetails{
   display: flex;
-  align-items: center;
-  height: 100%;
+  align-items: flex-start;
+  flex-direction: column;
   justify-content: center;
 }
-
-.poc-footer .right-content ul {
-  list-style: none;
+.golfDetails{
+  font-size: 14px;
+  color: #46515f;
+}
+/*Swtich Slider*/
+.switch input { 
+  display:none;
+}
+.switch {
+  display:inline-block;
+  width:60px;
+  height:35px;
+  margin:13px;
+  transform:translateY(50%);
+  position:relative;
 }
 
-.poc-footer .right-content ul li {
-  display: inline;
-  padding-right: 60px;
-  font-family: Avenir;
+.slider {
+  position:absolute;
+  top:15px;
+  bottom:0;
+  left:0;
+  right:10px;
+  border-radius:30px;
+  box-shadow:0 0 0 2px #777, 0 0 4px #777;
+  cursor:pointer;
+  border:4px solid transparent;
+  overflow:hidden;
+   transition:.4s;
+}
+.slider:before {
+  position:absolute;
+  content:"";
+  width:100%;
+  height:100%;
+  background:#777;
+  border-radius:30px;
+  transform:translateX(30px);
+  transition:.4s;
+}
+
+input:checked + .slider:before {
+  transform:translateX(-30px);
+  background:limeGreen;
+  // background: #777
+}
+input:checked + .slider {
+  box-shadow:0 0 0 2px limeGreen,0 0 2px limeGreen;
+  // box-shadow:0 0 0 2px #777,0 0 2px #777;
+}
+.nextToggler{
+  margin-left: 60px;
+}
+
+/*End of Switch slider*/
+@media (min-width: 320px) and (max-width: 575px) {
+  .container{
+    padding: 0px 40px;
+  }
+  .videoButtons button{
+    font-size: 8.9px;
+  }
+  .nextToggler{
+    font-size: 10.9px;
+    margin-left: 10px;
+  }
+  .borderTB{
+    padding: 0px;
+  }
+  .borderTB .d-flex{
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);   
+    padding: 30px 0px; 
+  }
+  .imgDetails h6{
   font-size: 13px;
-}
-.poc-footer .social-media-div {
-  float: left;
-  padding-left: 209px;
-}
-
-.poc-footer .social-media-div ul li {
-  display: inline;
-}
-
-.poc-footer .social-media-div ul li img {
-  height: 32px;
-  padding: 0px 5px;
-}
-
-.poc-footer .copyright-div {
-  /* float: right; */
-  text-align: right;
-  color: #9d9c9c;
-  padding: 25px;
-}
-@media screen and (max-width: 631px) {
-  .poc-footer .right-content ul li {
-      display: block;
+  font-weight: 900;
+  color: #656565;
   }
-  .poc-footer .social-media-div ul{
-      display: flex;
-      justify-content: center;
-      padding: 0;
+  .imgDetails p{
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #8b8b8b;    
   }
-  .poc-footer .social-media-div{
-      float: left;
-      width: 100%;
-      padding-left: 0;
-      text-align: center;
+  .imgDetails p:nth-child(3){
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 500;
+    color: #8b8b8b;
   }
-  .poc-footer .copyright-div{
-      text-align: center;
-      color: #9d9c9c;
-      padding: 25px;
+  .golfDetails{
+    font-size: 8.9px;
   }
 }

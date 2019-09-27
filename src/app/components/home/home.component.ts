@@ -28,14 +28,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.generateClickEvent();
   }
 
-  showModalPopup() {
-    this.showModal = true;
-  }
-
-  closeModal(event) {
-    this.closeBtn.nativeElement.click();
-  }
-
   generateClickEvent() {
     this.videoJSplayer.on('play', () => {
       this.generateDynamicEventsBasedonElement('.box1 .rectangle', '.box1 .close');
@@ -112,7 +104,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       </div>`
       overlay_content_fourth =  `<div class="box4" style="margin-top: -15px;">
       <div class="close">
-      <i class="fa fa-times" aria-hidden="true"></i></div>
+       <i class="fa fa-times" aria-hidden="true"></i></div>
       <img src="/assets/images/iphone-detail-ad1.png">
     </div>`
     }

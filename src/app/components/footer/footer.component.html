@@ -1,46 +1,101 @@
-<div class="poc-footer">
-    <div class="footer-rectangle">
-        <div class="main-div">
-            <div class="row">
-                <div class="logo-div col-md-4 col-sm-12 mt-2">
-                    <div class="left-content">
-                        <img src="/assets/images/fanease-logo@3x.png">
-                        <hr>
-                        <p>
-                            Fanease is video service for content creators. Many desktop publishing packages and web page editors now
-                        </p>
-                    </div> <!--//.left-content -->
-                </div> <!--//.logo-div-->
+<div class="container">
+    <div class="row">
+        <div class="videoDescription">
+            <h4>The Canadian Open at Hamilton Golf and Country Club</h4>
+            <p>22 144 252 views</p>
+        </div>
 
-                <div class="menu-div col-md-8 col-sm-12">
-                    <div class="right-content">
-                        <ul>
-                            <li>ABOUT US</li>
-                            <li>CONTACT US</li>
-                            <li>PRIVACY POLICY</li>
-                            <li>TERMS OF USE</li>
-                        </ul>
+    </div>
+    <div class="row align-items-baseline">
+        <div class="videoButtons">
+            <button type="button" class="btn btn-default">1 462 234 <i class="fa fa-thumbs-up"
+                    aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-spacing">1462 <i class="fa fa-thumbs-down"
+                    aria-hidden="true"></i></button>
+            <button type="button" data-toggle="modal" data-target="#myModal" (click)="showModalPopup()"
+                    class="btn btn-default btn-spacing">Share <i class="fa fa-share" aria-hidden="true"></i></button>
+        </div>
+        <div class="nextToggler">Auto Next
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+            <div class="dropdown show">
+            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              More Videos
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+    </div>
+    <div class="row borderTB">
+        <div class="col-md-5 col-sm-6 d-flex">
+            <div>
+                <img src="../../../assets/images/sports.png">
+            </div>
+            <div class="imgDetails">
+                <h6>CBS Sport</h6>
+                <p>152 videos</p>
+                <p>Published: 06.24.2019</p>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-6 golfDetails">
+            <p>Hamilton Golf and Country Club hosting for the 6th time on the 100th Anniversary of the Canadian Open
+                🇨🇦🏌️‍♂️</p>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="showModal">
+    <div id="myModal" class="modal fade" style="margin-top:100px;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="header-block">
+                        <div class="close" data-dismiss="modal" #closeBtn>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <p class="Share-a-link">
+                            Share a link
+                        </p>
+                    </div>
+                    <div class="media-icons">
+                        <div class="inline-block">
+                            <img src="/assets/images/embed.png">
+                            <p>Embed</p>
+                        </div>
+                        <div class="inline-block">
+                            <img src="/assets/images/fb.png">
+                            <p>Facebook</p>
+                        </div>
+                        <div class="inline-block">
+                            <img src="/assets/images/twitter.png">
+                            <p>Twitter</p>
+                        </div>
+                    </div>
+                    <div class="content-area">
+                        <div class="iframe-width560">
+                            <p>
+                                < iframe width="560" height="315" src="https://www.youtube.com/embed/fV8dqctTNgE"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                    < /iframe> </p> </div> </div> <div class="copy-link">
+                                        <div class="fanease-url inline-block">
+                                            fanease.com/my_video
+                                        </div>
+                                        <div class="copy inline-block">
+                                            COPY
+                                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row footer-div mt-3">
-            <div class="col-md-6 col-sm12 social-media-div">
-                <ul>
-                    <li>
-                        <img src="/assets/images/g+@3x.png">
-                    </li>
-                    <li>
-                        <img src="/assets/images/fb1@3x.png">
-                    </li>
-                    <li>
-                        <img src="/assets/images/tw@3x.png">
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-6 col-sm12 copyright-div">
-                © 2019 Fanease. All rights are reserved
-            </div>
-        </div>
     </div>
-</div>
