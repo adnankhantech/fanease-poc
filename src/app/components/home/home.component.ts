@@ -28,6 +28,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.generateClickEvent();
   }
 
+  // showModalPopup() {
+  //   this.showModal = true;
+  // }
+
+  // closeModal(event) {
+  //   this.closeBtn.nativeElement.click();
+  // }
+
   generateClickEvent() {
     this.videoJSplayer.on('play', () => {
       this.generateDynamicEventsBasedonElement('.box1 .rectangle', '.box1 .close');
@@ -118,7 +126,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="description">
           <img src="/assets/images/shape.png"><br>
           <hr>
-          <p>25 &#8451;</p>
+          <p style="margin-top: -12px;"><b>+25 &#8451;</b></p>
         </div>
         </div>
         </div>`
@@ -132,7 +140,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           <h2 class="M6-Driver">
             M6 Driver
           </h2>
-          <p>$ 499.99</p>
+          <p>$499.99</p>
           <img src="/assets/images/group-38.png" style="padding-bottom:10px;"><br>
           <a class="view">
             View Product >
@@ -150,7 +158,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           <h2 class="title">
               NIKE GOLF SHIRT
           </h2>
-          <p>$55.00 </p>
+          <p>$49.99 </p>
           <img src="/assets/images/nike-logo.png" style="padding-bottom:10px;"><br>
           <a class="view">
             View Product >
@@ -160,7 +168,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       </div>`
       overlay_content_fourth =  `<div class="box4" style="margin-top: -32px;">
       <div class="close">
-      <i class="fa fa-times" aria-hidden="true"></i></div>
+      <img class="close" src="/assets/images/group-28.png"></div>
       <img src="/assets/images/detail-ad1.png" class="detail-image">
     </div>`
     }
@@ -172,9 +180,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       overlay_content_fifth: `<div class="box5">
       <div class="rectangle">
       <div class="close">
-      <i class="fa fa-times" aria-hidden="true"></i></div>
+      <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
       <div class="img-wrap">
-      <a href="https://www.golfposer.com/nike-golf-shirt-vapor-solid-habanero-red-ss19" target="_blank">         
+      <a href="https://www.taylormadegolf.com/M6-Driver/DW-AL197.html?cgid=taylormade-drivers-M5-M6&lang=default#lang=default&start=3&" target="_blank">         
       </div>
           <div class="img-wrap">
               <div class="logo-container">                            
@@ -190,7 +198,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       overlay_content_sixth: `<div class="box4">
       <div class="rectangle">
           <div class="close">
-          <i class="fa fa-times" aria-hidden="true"></i></div>
+          <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
           <div class="img-wrap">
           <a href="https://www.golfposer.com/nike-golf-shirt-vapor-solid-habanero-red-ss19" target="_blank">
           <div class="logo-container">                            
@@ -249,7 +257,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         {
           start: 145,
           content: templateObj.overlay_content_sixth,
-          end: 'playing',
+          end: 166,
           align: 'top-left'
         }]
     })
@@ -277,7 +285,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         {
           start: 70,
           content: templateObj.overlay_content_fifth,
-          end: 'playing',
+          end: 90,
           align: 'bottom-right'
         },
         {
@@ -311,7 +319,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         {
           start: 19,
           content: templateObj.overlay_content_fourth,
-          end: 'playing',
+          end: 55,
           align: 'top-right',
           class: 'overlay-fourth'
         },

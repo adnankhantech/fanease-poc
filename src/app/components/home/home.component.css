@@ -16,15 +16,21 @@ h1 {
 
 .box1 .rectangle {
   position: relative;
-  width: 249px;
-  height: 94px;
+  height: 90px;
   opacity: 0.8;
   border-radius: 10px;
   box-shadow: -9px 2px 24px 0 rgba(0, 0, 0, 0.5);
-  background-color: #37787c;
+  background-color: #285a5d;
   padding: 10px;
   box-sizing: border-box;
-  width: 249px;
+  width: 218px;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
 }
 
 .box1 .close {
@@ -40,6 +46,7 @@ h1 {
   top: 25px;
   left: 20px; */
   float: left;
+  margin-left:15px;
 }
 
 .box1 .description {
@@ -51,8 +58,9 @@ h1 {
 
 .box1 .description hr {
   width: 49px;
-  opacity: 0.2;
+  opacity: 0.1;
   border: solid 1px #ffffff;
+  margin-top: 9px;
 }
 
 .box1 .description p {
@@ -92,13 +100,14 @@ h1 {
 .box2 .rectangle {
   position: relative;
   width: 249px;
-  height: 114px;
+  height: 110px;
   opacity: 0.8;
   border-radius: 10px;
   box-shadow: -9px 2px 24px 0 rgba(0, 0, 0, 0.5);
-  background-color: #37787c;
+  background-color: #285a5d;
   padding: 15px;
   box-sizing: border-box;
+  font-family: Avenir;
 }
 
 .box2 .close {
@@ -123,6 +132,13 @@ h1 {
 
 .box2 .description p {
   margin: 0;
+  font-family: Avenir;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
   color: #ffffff;
 }
 
@@ -161,7 +177,7 @@ h1 {
   opacity: 0.8;
   border-radius: 10px;
   box-shadow: -9px 2px 24px 0 rgba(0, 0, 0, 0.5);
-  background-color: #37787c;
+  background-color: #285a5d;
   padding: 15px;
   box-sizing: border-box;
 }
@@ -188,7 +204,14 @@ h1 {
 
 .box3 .description p {
   margin: 0;
-  color: #ffffff;
+  font-family: Avenir;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff; 
 }
 
 .box3 .description img {
@@ -221,13 +244,13 @@ h1 {
 
 .box4 .rectangle {
   position: relative;
-  width: 347px;
+  width: 300px;
   /* height: 430px; */
   opacity: 0.97;
   border-radius: 0px 10px 10px 0px;
   box-shadow: -8px 2px 22px 0 rgba(0, 0, 0, 0.5);
   background-color: #fff;
-  border: 15px solid #37787c;
+  border: 15px solid #285a5d;
   text-align: initial;
 }
 
@@ -265,7 +288,7 @@ h1 {
 
 .box5 .rectangle {
   position: relative;
-  width: 347px;
+  width: 290px;
   /* height: 496px; */
   opacity: 0.97;
   border-radius: 10px 0px 0px 10px;
@@ -289,7 +312,7 @@ h1 {
 }
 
 .rectangle .close {
-  top: 15px;
+  top: 10px;
   right:15px;
   position: absolute;
 }
@@ -305,6 +328,10 @@ h1 {
 
 .video-js .vjs-overlay-bottom-left {
     bottom: 10.5em !important;
+ }
+
+ .video-js .vjs-overlay{
+   text-align:left;
  }
 .header-block .close {
   float: right;
@@ -521,18 +548,31 @@ h1 {
 }
 
 .video-section .video-js {
-  height: 505px !important;
+  height: 568px !important;
 }
 .video_player-dimensions {
-  width: 900px !important;
+  width: 1013px !important;
 }
 
 .video-js .vjs-overlay-top-left{
   top: 50px;
 }
 
+.video-js .vjs-overlay-top-right {
+  top: 30px;
+}
 
+.detail-image{
+  width:265px;
+}
 
+.video-js .vjs-overlay-bottom-right{
+  bottom: 4.5em;
+}
+
+.medium-icon{
+  font-size: 20px;
+}
 @media (min-width: 480px) and (max-width: 790px) {
   .video-js .vjs-overlay-top-right {
     right: 5px;
@@ -568,7 +608,7 @@ h1 {
   .video-js .vjs-overlay-top-right {
     right: 5px;
     top: 28px;
-}
+  }
   .box1 .rectangle {
       width: 90px;
       height: 65px;
@@ -787,9 +827,6 @@ h1 {
 .video-js .vjs-overlay-top-left {
   top: 25px;
 }
-/* .video-js .vjs-overlay-bottom-right{
-  right: 30px;
-} */
 .box4 .rectangle{
   width: 265px;
 }
