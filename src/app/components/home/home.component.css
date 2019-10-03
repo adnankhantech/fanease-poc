@@ -172,7 +172,7 @@ h1 {
 
 .box3 .rectangle {
   position: relative;
-  width: 269px;
+  width: 265px;
   height: 114px;
   opacity: 0.8;
   border-radius: 10px;
@@ -312,8 +312,8 @@ h1 {
 }
 
 .rectangle .close {
-  top: 10px;
-  right:15px;
+  top: 7px;
+  right: 8px;
   position: absolute;
 }
 .box6 .rectangle {
@@ -543,7 +543,7 @@ h1 {
   text-decoration: none;
 }
 .golferTshirt{
-  padding: 0 20px;
+  padding: 0 10px;
   margin-bottom: 15px;
 }
 
@@ -573,6 +573,11 @@ h1 {
 .medium-icon{
   font-size: 20px;
 }
+
+.box4{
+  margin-top: -32px;
+}
+
 @media (min-width: 480px) and (max-width: 790px) {
   .video-js .vjs-overlay-top-right {
     right: 5px;
@@ -580,8 +585,20 @@ h1 {
   }
 
   .box4 .detail-image{
-    height: 393px;
-    width: 299px;
+    /* height: 393px;
+    width: 299px; */
+  }
+
+  .box1 .rectangle {
+    height: 88px;
+  }
+
+  .box4{
+    margin-top: -24px;
+  }
+
+  .box4 .close{
+    top: 10px;
   }
 }
 @media(min-width:481px) and (max-width:767px) {
@@ -825,17 +842,18 @@ h1 {
     width: 700px;
 }
 .video-js .vjs-overlay-top-left {
-  top: 25px;
+  top: 50px;
 }
 .box4 .rectangle{
   width: 265px;
 }
 .box5 .rectangle{
-  width: 280px;
+  width: 250px;
 }
 .golferTshirt{
   padding: 0 10px;
-  height: 200px;
+  height: 243px;
+  width: 214px;
 }
 .box5 .img-wrap .logo {
   /* width: 75px;   */
@@ -844,6 +862,10 @@ h1 {
 .box4 .img-wrap .logo {
   /* width: 75px;   */
   padding: 15px;
+}
+
+.medium-icon{
+  font-size: 16px;
 }
 }
 @media (min-width: 992px) and (max-width: 1024px) {

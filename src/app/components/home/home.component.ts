@@ -166,7 +166,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         </div>
       </div>
       </div>`
-      overlay_content_fourth =  `<div class="box4" style="margin-top: -32px;">
+      overlay_content_fourth =  `<div class="box4">
       <div class="close">
       <img class="close" src="/assets/images/group-28.png"></div>
       <img src="/assets/images/detail-ad1.png" class="detail-image">
@@ -205,7 +205,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           <img src="../../../assets/images/golferlogo.svg" class="logo">  
           </div>
           <div> 
-          <img src="../../../assets/images/golfertshirt.png" class="golferTshirt">       
+          <img src="../../../assets/images/golfertshirt_new.png" class="golferTshirt">       
           </div>
               
           </div>
