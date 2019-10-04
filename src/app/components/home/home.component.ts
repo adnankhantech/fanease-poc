@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, Renderer2, ViewChild, RendererStyleFlags2} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { $ } from 'protractor';
 
@@ -26,6 +26,24 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.videoJSplayer = videojs('video_player');
     this.videoJSInit();
     this.generateClickEvent();
+
+    
+    this.videoJSplayer.on('fullscreenchange', ()=>{
+      if (this.videoJSplayer.isFullscreen()){
+        if (window.innerWidth <= 480){
+          this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '235px');
+          this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '25.5em');
+        }
+        else if(window.innerWidth == 768){
+          this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '310px');
+          this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '33.5em');
+        }
+        else if(window.innerWidth == 1024){
+          this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '115px');
+          this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '15.5em');
+        }
+      }
+    })
   }
 
   // showModalPopup() {
@@ -97,7 +115,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       </div>`
       overlay_content_third=`<div class="box3">
       <div class="rectangle">
-        <img class="close" src="/assets/images/group-37.png">
+         <img class="close" src="/assets/images/group-37.png"></div>
         <div class="image-block">
             <img src="/assets/images/tshirt.png">&nbsp;&nbsp;&nbsp;&nbsp;
             <img src="/assets/images/nike-logo.png" style="padding-bottom:10px; height:40px;">
@@ -112,7 +130,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       </div>`
       overlay_content_fourth =  `<div class="box4" style="margin-top: -15px;">
       <div class="close">
-       <i class="fa fa-times" aria-hidden="true"></i></div>
+      <img class="close" src="/assets/images/group-28.png"></div>
       <img src="/assets/images/iphone-detail-ad1.png">
     </div>`
     }
@@ -166,7 +184,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         </div>
       </div>
       </div>`
-      overlay_content_fourth =  `<div class="box4">
+      overlay_content_fourth = `<div class="box4">
       <div class="close">
       <img class="close" src="/assets/images/group-28.png"></div>
       <img src="/assets/images/detail-ad1.png" class="detail-image">
@@ -180,7 +198,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       overlay_content_fifth: `<div class="box5">
       <div class="rectangle">
       <div class="close">
-      <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
+          <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
       <div class="img-wrap">
       <a href="https://www.taylormadegolf.com/M6-Driver/DW-AL197.html?cgid=taylormade-drivers-M5-M6&lang=default#lang=default&start=3&" target="_blank">         
       </div>
@@ -225,13 +243,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         start: 19,
         content: templateObj.overlay_content_first,
         end: 55,
-        align: 'top-right'
+        align: 'top-right',
+        class: 'overlay-first-initial'
       },
       {
         start: 70,
         content: templateObj.overlay_content_second,
         end: 90,
-        align: 'bottom-right'
+        align: 'bottom-right',
+        class: 'overlay-second-initial'
       },
       {
         start: 145,
@@ -269,10 +289,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   viewDetailAdTwo() {
     let templateObj = this.generateTemplateForOverlay();
-    let overlay_content_fifth;
-    if(window.innerWidth <= 480){
-      overlay_content_fifth =  `<p>This is viewed in responsive view</p>`
-    }
+    let isFullscreen =  this.videoJSplayer.isFullscreen();
+
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [
@@ -280,13 +298,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           start: 70,
           content: templateObj.overlay_content_second,
           end: 90,
-          align: 'bottom-right'
+          align: 'bottom-right',
+          class: 'overlay-second-initial'
         },
         {
           start: 70,
           content: templateObj.overlay_content_fifth,
           end: 90,
-          align: 'bottom-right'
+          align: 'bottom-right',
+          class: 'overlay-second-expanded'
         },
         {
           start: 145,
@@ -302,9 +322,41 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
     this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
 
+    if (window.innerWidth <= 480){
+      if(isFullscreen){
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '25.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '25.5em');
+      }
+      else {
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '4.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '4.5em');
+      }
+    }
+    else if (window.innerWidth == 768){
+      if(isFullscreen){
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '33.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '33.5em');
+      }
+      else{
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '4.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '4.5em');
+      }
+    }
+    else if(window.innerWidth == 1024){
+      if(isFullscreen){
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '15.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '15.5em');
+      }
+      else{
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '5.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '5.5em');
+      }
+    }
+    //this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '25.5em');
   }
 
   viewDetailAdOne() {
+    let isFullscreen = this.videoJSplayer.isFullscreen();
     let templateObj = this.generateTemplateForOverlay();
 
     this.videoJSplayer.overlay({
@@ -314,7 +366,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           start: 19,
           content: templateObj.overlay_content_first,
           end: 55,
-          align: 'top-right'
+          align: 'top-right',
+          class: 'overlay-first-initial'
         },
         {
           start: 19,
@@ -327,7 +380,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           start: 70,
           content: templateObj.overlay_content_second,
           end: 90,
-          align: 'bottom-right'
+          align: 'bottom-right',
+          class: 'overlay-second-initial'
         },
         {
           start: 145,
@@ -340,6 +394,38 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
     this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
     this.generateDynamicEventsBasedonElement('.box4', '.box4 .close');
+
+
+    if (window.innerWidth == 768){
+      if(isFullscreen){
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-fourth'), 'top', '310px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '310px');
+      }
+      else{
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-fourth'), 'top', '23px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '23px');
+      }
+    }
+    else if(window.innerWidth == 1024){
+      if(isFullscreen){
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-fourth'), 'top', '115px');
+          this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '115px');
+      }
+      else{
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-fourth'), 'top', '23px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '23px');
+      }
+    }
+    else if (window.innerWidth <= 480){
+      if(isFullscreen){
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-fourth'), 'top', '235px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '235px');
+      }
+      else{
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-fourth'), 'top', '23px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-first-initial'), 'top', '23px');
+      }
+    }
 
     if(window.innerWidth <= 480){
       this.elementRef.nativeElement.querySelector('.image-block').addEventListener('click', this.viewDetailAdOne.bind(this));

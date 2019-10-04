@@ -746,8 +746,8 @@ h1 {
    border: 8px solid #37787c;
 }
 .rectangle .close {
-  top: 10px;
-  right:10px;
+  top: 5px;
+  right:4px;
   position: absolute;
   font-size: 1rem;
 }
@@ -809,6 +809,10 @@ h1 {
 .video-js .vjs-overlay-top-left{
   top: 23px;
 }
+.medium-icon{
+  font-size: 12px;
+}
+
 }
 @media (min-width: 481px) and (max-width: 767px) {
   .video-section .video-js {
