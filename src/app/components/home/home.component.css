@@ -327,7 +327,7 @@ h1 {
 }
 
 .video-js .vjs-overlay-bottom-left {
-    bottom: 10.5em !important;
+    /* bottom: 10.5em !important; */
  }
 
  .video-js .vjs-overlay{
@@ -581,7 +581,7 @@ h1 {
 @media (min-width: 480px) and (max-width: 790px) {
   .video-js .vjs-overlay-top-right {
     right: 5px;
-    top: 23px;
+    top: 28px;
   }
 
   .box4 .detail-image{
@@ -599,6 +599,10 @@ h1 {
 
   .box4 .close{
     top: 10px;
+  }
+
+  .overlay-third-initial{
+    /* bottom: 8.5em !important; */
   }
 }
 @media(min-width:481px) and (max-width:767px) {
@@ -619,6 +623,7 @@ h1 {
   .box3 .title{
     font-size: 12px;
   }
+  
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
