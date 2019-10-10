@@ -247,7 +247,7 @@ h1 {
   width: 300px;
   /* height: 430px; */
   opacity: 0.97;
-  border-radius: 0px 10px 10px 0px;
+  /* border-radius: 0px 10px 10px 0px; */
   box-shadow: -8px 2px 22px 0 rgba(0, 0, 0, 0.5);
   background-color: #fff;
   border: 15px solid #285a5d;
@@ -578,6 +578,14 @@ h1 {
   margin-top: -32px;
 }
 
+@media (min-width: 991px) and (max-width: 1400px) {
+  
+  .overlay-third-initial{
+    bottom: 9.5em !important;
+  }
+}
+
+
 @media (min-width: 480px) and (max-width: 790px) {
   .video-js .vjs-overlay-top-right {
     right: 5px;
@@ -688,20 +696,21 @@ h1 {
     font-size: 11px;
 }
 .box3 .rectangle {
-  width: 120px;
-  height: 88px;
-  padding: 5px;
+  width: 122px;
+  height: 74px;
+  padding: 10px;
 }
 .box3 .close {
   width: 10px;
 }
 .box3 .image-block img {
-  height: 42px;
+  height: 32px;
   width: 40px;
 }
 
 .box3 .description {
   padding: 10px;
+  margin-left: -10px;
 }
 
 .box3 .title {
@@ -812,7 +821,7 @@ h1 {
   margin-top: 5px;
 }
 .video-js .vjs-overlay-top-left{
-  top: 23px;
+  /* top: 23px; */
 }
 .medium-icon{
   font-size: 12px;
