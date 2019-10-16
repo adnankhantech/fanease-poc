@@ -96,6 +96,132 @@ input:checked + .slider {
   margin-left: 60px;
 }
 
+.poc-footer .footer-rectangle {
+  width: 100%;
+  height: 280px;
+  background-color: #000000;
+}
+
+.poc-footer .logo-div {
+  /* position: relative;
+  display: inline-block; */
+  height: 100%;
+  border-right: solid 1px #333333;
+}
+
+.poc-footer .menu-div {
+  /* position: absolute;
+  display: inline-block; */
+  height: 100%;
+  margin-top: 60px;
+}
+
+.poc-footer .main-div {
+  // height: 260px;
+  margin-top:15px;
+  position: relative;
+  border-bottom: solid 1px #333333;
+}
+
+.poc-footer .logo-div {
+  text-align: center;
+  /* float: left; */
+}
+
+.poc-footer .logo-div hr {
+  width: 169px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #9d9797;
+}
+
+.poc-footer .logo-div img {
+  width: 169px;
+}
+
+.poc-footer .left-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-flow: column;
+  margin-top: 30px;
+}
+
+.poc-footer .left-content p {
+  width: 251px;
+  opacity: 0.4;
+  height: 100px;
+  color: #fff;
+  margin: 0;
+  text-align: justify;
+}
+
+.poc-footer .right-content {
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+
+.poc-footer .right-content ul {
+  list-style: none;
+}
+
+.poc-footer .right-content ul li {
+  display: inline;
+  padding-right: 60px;
+  font-family: Avenir;
+  font-size: 13px;
+}
+.poc-footer .social-media-div {
+  float: left;
+  padding-top: 15px;
+  padding-left: 65px;
+}
+
+.poc-footer .social-media-div ul li {
+  display: inline;
+}
+
+.poc-footer .social-media-div ul li img {
+  height: 32px;
+  padding: 0px 5px;
+}
+
+.poc-footer .copyright-div {
+  /* float: right; */
+  text-align: right;
+  color: #9d9c9c;
+  padding: 25px;
+}
+@media screen and (max-width: 631px) {
+  .poc-footer .right-content ul li {
+      display: block;
+  }
+  .poc-footer .social-media-div ul{
+      display: flex;
+      justify-content: center;
+      padding: 0;
+  }
+  .poc-footer .social-media-div{
+      float: left;
+      width: 100%;
+      padding-left: 0;
+      text-align: center;
+  }
+  .poc-footer .copyright-div{
+      text-align: center;
+      color: #9d9c9c;
+      padding: 25px;
+  }
+}
+
 /*End of Switch slider*/
 @media (min-width: 320px) and (max-width: 575px) {
   .container{

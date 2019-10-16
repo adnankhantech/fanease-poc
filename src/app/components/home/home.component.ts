@@ -26,13 +26,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.videoJSplayer = videojs('video_player');
     this.videoJSInit();
     this.generateClickEvent();
-
+    console.log("fullscreen width", window.innerWidth)
     this.videoJSplayer.on('ended', ()=>{
       window.location.reload();
     })
     
     this.videoJSplayer.on('fullscreenchange', ()=>{
-      console.log("fullscreen width", window.innerWidth)
       let overlay_first = this.elementRef.nativeElement.querySelector('.overlay-first-initial');
       let overlay_second = this.elementRef.nativeElement.querySelector('.overlay-second-initial');
       let overlay_third = this.elementRef.nativeElement.querySelector('.overlay-third-initial');
@@ -222,8 +221,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       <div class="rectangle">
          <img class="close" src="/assets/images/group-37.png">
         <div class="image-block">
-            <img src="/assets/images/tshirt.png">&nbsp;&nbsp;&nbsp;&nbsp;
-            <img src="/assets/images/nike-logo.png" style="margin-left:9px; height:19px;">
+            <img src="/assets/images/nike-logo.png" style="height:19px;">
         </div>
         <div class="description">
           <a class="view">
@@ -247,7 +245,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="description">
           <img src="/assets/images/shape.png"><br>
           <hr>
-          <p style="margin-top: -12px;"><b>+25 &#8451;</b></p>
+          <p style="margin-top: -12px;"><b>77 &#8457;</b></p>
         </div>
         </div>
         </div>`
