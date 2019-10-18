@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
             }
           }
       }
-      else if(window.innerWidth == 768){
+      else if(window.innerWidth >= 768 && window.innerWidth <= 785){
         if (this.videoJSplayer.isFullscreen()){
           this.renderer.setStyle(overlay_first, 'top', '310px');
           this.renderer.setStyle(overlay_second, 'bottom', '33.5em');
@@ -200,7 +200,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       <div class="rectangle">
         <img  class="close" src="/assets/images/group-37.png">
         <div class="image-block">
-          <img src="/assets/images/i-logo-3x.png" style="width:50px;">
+          <img src="/assets/images/i_logo@3x.png" style="width:50px;">
         </div>
         </div>
         </div>`
@@ -208,7 +208,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="rectangle ">
           <img class="close" src="/assets/images/group-37.png">
           <div class="image-block">
-            <img src="/assets/images/box2responsive.png">
+            <img src="/assets/images/Group 16.png">
           </div>
         <div class="description">
           <a class="view">
@@ -221,7 +221,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       <div class="rectangle">
          <img class="close" src="/assets/images/group-37.png">
         <div class="image-block">
-            <img src="/assets/images/nike-logo.png" style="height:19px;">
+            <img src="/assets/images/NIKE_logo@2x.png" style="height:19px;">
         </div>
         <div class="description">
           <a class="view">
@@ -240,7 +240,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       <div class="rectangle">
         <img  class="close" src="/assets/images/group-37.png">
         <div class="image-block">
-          <img src="/assets/images/i-logo-3x.png" style="width:69px;">
+          <img src="/assets/images/i_logo@3x.png" style="width:69px;">
         </div>
         <div class="description">
           <img src="/assets/images/shape.png"><br>
@@ -260,7 +260,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
             M6 Driver
           </h2>
           <p>$499.99</p>
-          <img src="/assets/images/group-38.png" style="padding-bottom:10px;"><br>
+          <img src="/assets/images/Group 16.png" style="padding-bottom:10px;"><br>
           <a class="view">
             View Product >
           </a>
@@ -278,7 +278,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
               NIKE GOLF SHIRT
           </h2>
           <p>$49.99 </p>
-          <img src="/assets/images/nike-logo.png" style="padding-bottom:10px;"><br>
+          <img src="/assets/images/NIKE_logo.png" style="padding-bottom:10px;"><br>
           <a class="view">
             View Product >
           </a>
@@ -324,7 +324,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           <img src="../../../assets/images/golferlogo.svg" class="logo">  
           </div>
           <div> 
-          <img src="../../../assets/images/golfertshirt_new.png" class="golferTshirt">       
+          <img src="../../../assets/images/Group 23@2x.png" class="golferTshirt">       
           </div>
               
           </div>

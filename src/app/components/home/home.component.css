@@ -244,7 +244,7 @@ h1 {
 
 .box4 .rectangle {
   position: relative;
-  width: 300px;
+  width: 265px;
   /* height: 430px; */
   opacity: 0.97;
   /* border-radius: 0px 10px 10px 0px; */
@@ -571,7 +571,7 @@ h1 {
 }
 
 .medium-icon{
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .box4{
@@ -581,7 +581,7 @@ h1 {
 @media (min-width: 991px) and (max-width: 1400px) {
   
   .overlay-third-initial{
-    bottom: 15.5em !important;
+    bottom: 16.5em !important;
   }
 }
 
@@ -624,11 +624,11 @@ h1 {
     padding-left: 10px;
   }
   .box2 .rectangle {
-    width: 219px;
+    width: 224px;
   }
   .box5 .rectangle {
     width: 218px;
-    height: 300px;
+    height: 340px;
   }
 }
 @media(min-width:481px) and (max-width:767px) {
@@ -917,7 +917,7 @@ h1 {
 }
 
 .overlay-third-initial{
-  bottom: 6.5em !important;
+  bottom: 6.5em;
 }
 }
 @media (min-width: 992px) and (max-width: 1024px) {
