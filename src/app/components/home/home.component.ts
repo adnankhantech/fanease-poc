@@ -382,7 +382,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           start: 145,
           content: templateObj.overlay_content_sixth,
           end: 166,
-          align: 'top-left',
+          align: 'bottom-left',
           class: 'overlay-third-expanded'
         }]
     })
@@ -395,24 +395,28 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       if(isFullscreen){
         this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '280px');
         this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '25.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'bottom', '25.5em');
       }
     }
     else if (window.innerWidth == 768){
       if(isFullscreen){
         this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '345px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'bottom', '36.5em');
         this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '36.5em');
       }
     }
     else if(window.innerWidth == 1024){
       if(isFullscreen){
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '200px');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '15.5em');
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '240px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'bottom', '22.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '22.5em');
       }
     }
     else if(window.innerWidth > 1024){
       if(isFullscreen){
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '290px');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '10.5em');
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '332px');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'bottom', '33.5em');
+        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '33.5em');
       }
     }
   }

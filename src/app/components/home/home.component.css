@@ -99,7 +99,7 @@ h1 {
 
 .box2 .rectangle {
   position: relative;
-  width: 249px;
+  width: 220px;
   height: 110px;
   opacity: 0.8;
   border-radius: 10px;
@@ -555,7 +555,7 @@ h1 {
 }
 
 .video-js .vjs-overlay-top-left{
-  top: 50px;
+  top: 170px;
 }
 
 .video-js .vjs-overlay-top-right {
@@ -566,8 +566,12 @@ h1 {
   width:265px;
 }
 
-.video-js .vjs-overlay-bottom-right{
-  bottom: 4.5em;
+.overlay-second-initial{
+  bottom: 1.5em;
+}
+
+.overlay-second-expanded{
+  bottom: 1.5em;
 }
 
 .medium-icon{
@@ -578,10 +582,18 @@ h1 {
   margin-top: -32px;
 }
 
-@media (min-width: 991px) and (max-width: 1400px) {
+.overlay-third-initial{
+  bottom: 16.5em;
+}
+
+@media (min-width: 991px) and (max-width: 1800px) {
   
   .overlay-third-initial{
     bottom: 16.5em !important;
+  }
+
+  .overlay-second-initial .rectangle{
+    width: 249px;
   }
 }
 
@@ -624,7 +636,7 @@ h1 {
     padding-left: 10px;
   }
   .box2 .rectangle {
-    width: 224px;
+    /* width: 224px; */
   }
   .box5 .rectangle {
     width: 218px;
@@ -656,6 +668,14 @@ h1 {
   .video-js .vjs-overlay-top-right {
     right: 5px;
     top: 28px;
+  }
+
+  .overlay-third-initial{
+    bottom: 6.5em;
+  }
+
+  .overlay-third-expanded{
+    top: 50px;
   }
   .box1 .rectangle {
       width: 90px;
@@ -716,7 +736,7 @@ h1 {
 .box3 .rectangle {
   width: 110px;
   height: 60px;
-  padding: 10px;
+  padding: 5px;
 }
 .box3 .close {
   width: 10px;
@@ -849,6 +869,8 @@ h1 {
   margin-left: 8px;
 }
 
+
+
 }
 @media (min-width: 481px) and (max-width: 767px) {
   .video-section .video-js {
@@ -862,7 +884,7 @@ h1 {
   } */
   .golferTshirt{
     padding: 0 10px;
-    height: 200px;
+    height: 240px;
   }
   .box5 .img-wrap .logo {
     /* width: 75px;   */
@@ -876,8 +898,6 @@ h1 {
   .overlay-third-initial{
     bottom: 8.5em !important;
   }
-  
-  
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .video-section .video-js {
