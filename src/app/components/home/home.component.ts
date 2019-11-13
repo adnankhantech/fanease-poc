@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {
   }
-
+  
   ngOnInit() { }
 
   ngAfterViewInit(): void {
@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       else if(window.innerWidth > 1024){
         if (this.videoJSplayer.isFullscreen()){
           this.renderer.setStyle(overlay_first, 'top', '50px');
-          this.renderer.setStyle(overlay_second, 'bottom', '10.5em');
+          this.renderer.setStyle(overlay_second, 'bottom', '6.5em');
           this.renderer.setStyle(overlay_third, 'bottom', '10.5em');
         }
         else{
@@ -253,13 +253,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="rectangle ">
           <img class="close" src="/assets/images/group-37.png">
           <div class="image-block">
-            <img src="/assets/images/bitmap.png">
+            <img src="/assets/images/group-17.png">
           </div>
         <div class="description">
           <h2 class="M6-Driver">
-            M6 Driver
+            M6 Fairway
           </h2>
-          <p>$499.99</p>
+          <p>$299.99</p>
           <img src="/assets/images/Group 16.png" style="padding-bottom:10px;"><br>
           <a class="view">
             View Product >
@@ -301,14 +301,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       <div class="close">
           <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
       <div class="img-wrap">
-      <a href="https://www.taylormadegolf.com/M6-Driver/DW-AL197.html?cgid=taylormade-drivers-M5-M6&lang=default#lang=default&start=3&" target="_blank">         
+      <a href="https://www.taylormadegolf.com/M6-Fairway/N7310509.html?gclid=EAIaIQobChMIqI2s7oG15QIVkIbACh0BzQ_JEAQYAyABEgK4YvD_BwE&kpid=go_2018855898_74490452867_354265192544_pla-605273289299_c&utm_campaign=Seer_Shopping_Smart_HM&utm_medium=cpc&utm_device=c&utm_adgroup=N7310509&lang=default&utm_location=US&utm_source=google&utm_account=taylormadegolf&utm_content=354265192544" target="_blank">         
       </div>
           <div class="img-wrap">
               <div class="logo-container">                            
               <img src="../../../assets/images/tailormadelogo.svg" class="logo">  
               </div>
               <div class="">
-                <img src="../../../assets/images/bitmapbox6.png" class="golferTshirt">                
+                <img src="../../../assets/images/bitmapbox6_new.png" class="golferTshirt">                
               </div>
           </div>
         

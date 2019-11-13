@@ -222,6 +222,12 @@ input:checked + .slider {
   }
 }
 
+@media (min-width: 480px) and (max-width: 790px) {
+  .modal{
+    z-index: 99999 !important;
+  }
+}
+
 /*End of Switch slider*/
 @media (min-width: 320px) and (max-width: 575px) {
   .container{
@@ -288,6 +294,10 @@ input:checked + .slider {
 .iframe-width560 {
   height: auto;
   font-size: 12px;
+}
+
+.iframe-width560 p {
+  padding: 5px;
 }
 .copy-link {
   width: auto;
