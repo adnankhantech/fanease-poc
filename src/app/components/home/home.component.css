@@ -5,6 +5,9 @@
   min-width: 100%;
   background-size: cover;
 }
+video::-webkit-media-controls-start-playback-button {
+  display: none;
+}
 
 h1 {
   background: linear-gradient(to right, #ff9c9ccf 20%, #2be084 80%);
