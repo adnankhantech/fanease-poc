@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef, Renderer2, ViewChild, RendererStyleFlags2} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, ViewChild, RendererStyleFlags2, OnDestroy} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
-import { $ } from 'protractor';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 declare let videojs: any;
 
@@ -14,23 +14,39 @@ declare let videojs: any;
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private videoJSplayer: any;
   templateObj: any;
-  showModal: boolean = false;
+  deviceInfo = null;
+  isMobile: boolean;
+  isTablet: boolean;
+
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService) {
+    // this.checkIfMobileDevice();
   }
   
   ngOnInit() { }
 
+  checkIfMobileDevice(){
+    return this.deviceService.getDeviceInfo().userAgent.match(/iphone/) || this.deviceService.getDeviceInfo().userAgent.match(/ipad/) 
+  }
   ngAfterViewInit(): void {
-    this.videoJSplayer = videojs('video_player');
-    this.videoJSInit();
-    this.generateClickEvent();
-    console.log("fullscreen width", window.innerWidth)
-    this.videoJSplayer.on('ended', ()=>{
-      window.location.reload();
-    })
+
+    if(this.checkIfMobileDevice()) {
+      this.videoJSplayer = videojs('');
+    } else {
+      this.videoJSplayer = videojs('video_player');
+      this.videoJSInit();
+      this.generateClickEvent();
+      this.videoJSplayer.on('ended', ()=>{
+        window.location.reload();
+      })
+      
+      this.playerModificationForFullScreen();
+      }
     
+  }
+
+  playerModificationForFullScreen(){
     this.videoJSplayer.on('fullscreenchange', ()=>{
       let overlay_first = this.elementRef.nativeElement.querySelector('.overlay-first-initial');
       let overlay_second = this.elementRef.nativeElement.querySelector('.overlay-second-initial');
@@ -149,14 +165,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     })
   }
-
-  // showModalPopup() {
-  //   this.showModal = true;
-  // }
-
-  // closeModal(event) {
-  //   this.closeBtn.nativeElement.click();
-  // }
 
   generateClickEvent() {
     this.videoJSplayer.on('play', () => {
