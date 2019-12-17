@@ -11,7 +11,7 @@ declare let videojs: any;
   encapsulation: ViewEncapsulation.None
 })
 
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomeComponent implements AfterViewInit, OnDestroy {
   private videoJSplayer: any;
   templateObj: any;
   deviceInfo = null;
@@ -24,13 +24,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.checkIfMobileDevice();
   }
   
-  ngOnInit() { }
-
   checkIfMobileDevice(){
     return (this.deviceService.getDeviceInfo().userAgent.match(/iphone/)!= null) || (this.deviceService.getDeviceInfo().userAgent.match(/ipad/)!=null) 
   }
+  
   ngAfterViewInit(): void {
-
+    this.deviceInfo = this.deviceService.getDeviceInfo().userAgent;
     if(this.checkIfMobileDevice()) {
       this.videoJSplayer = videojs('');
     } else {
