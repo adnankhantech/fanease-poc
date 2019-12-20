@@ -25,7 +25,8 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
   
   checkIfMobileDevice(){
-    return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/)!= null) || (this.deviceService.getDeviceInfo().userAgent.match(/iPad/)!=null) 
+    // return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/)!= null) || (this.deviceService.getDeviceInfo().userAgent.match(/iPad/)!=null) 
+    return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/) != null);
   }
   
   ngAfterViewInit(): void {
