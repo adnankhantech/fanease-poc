@@ -1,88 +1,15 @@
+<app-header></app-header>
 <div class="wrapper one-nav-pad mt-lg-3 mt-md-3 mt-3">
   <div class="container-fluid h-100">
-	
     <div class="row m-0 w-100 h-100">
       <div class="col-12  p-0">
-        <div class="video-section d-flex align-items-center justify-content-center h-100">
-			<ng-container *ngIf="checkIfMobileDevice()">
-				<video id="video_player" class="video-js vjs-big-play-centered" controls reload="auto" data-setup="{}" webkit-playsinline="true" playsinline="true">
-					<source src="https://d3bvzl6owxj5uv.cloudfront.net/output_third.mov" type='video/mp4'>
-				<p class="vjs-no-js">
-				  To view this video please enable JavaScript, and consider upgrading to a web browser that
-				  <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-				</p>
-			  </video>
-			</ng-container>
-			<ng-container *ngIf="!checkIfMobileDevice()">
-				<video id="video_player" class="video-js vjs-big-play-centered" controls reload="auto" data-setup="{}" webkit-playsinline="true" playsinline="true">
-					<source src="https://d3bvzl6owxj5uv.cloudfront.net/Cropped_vid_for_POC.mov" type='video/mp4'>
-				<p class="vjs-no-js">
-					To view this video please enable JavaScript, and consider upgrading to a web browser that
-					<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-				</p>
-				</video>
-			</ng-container>			
-
+        <div
+          class="video-section d-flex align-items-center justify-content-center h-100"
+		>
+		<app-video-ad *ngIf="videoSrc" [videoSrc]="videoSrc"></app-video-ad>
         </div>
       </div>
-		</div>
-		
-		<!-- <div class="row m-0 w-100 h-100">
-			<div class="col-12 col-md-10 p-0 offset-2 mt-0">
-					<div class="button" style="margin-top: 25px;">
-							<div class="rectangle">
-									<button type="button" class="btn btn-default">1 462 234 <i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
-									<button type="button" class="btn btn-default btn-spacing">1462 <i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
-									<button type="button" data-toggle="modal" data-target="#myModal" (click)="showModalPopup()" class="btn btn-default btn-spacing">Share <i class="fa fa-share" aria-hidden="true"></i></button>
-							</div>
-					</div>
-			</div>
-		</div> -->
-		<!-- <div *ngIf="showModal" >
-				<div id="myModal" class="modal fade" style="margin-top:100px;">
-						<div class="modal-dialog">
-								<div class="modal-content">
-										<div class="modal-body">
-											<div class="header-block">
-													<div class="close" data-dismiss="modal" #closeBtn>
-															<i class="fa fa-times" aria-hidden="true"></i>
-													</div>
-													<p class="Share-a-link">
-															Share a link
-													</p>
-											</div>
-											<div class="media-icons">
-													<div class="inline-block">
-															<img src="/assets/images/embed.png">
-															<p>Embed</p>
-													</div>
-													<div class="inline-block">
-															<img src="/assets/images/fb.png">
-															<p>Facebook</p>
-													</div>
-													<div class="inline-block">
-															<img src="/assets/images/twitter.png">
-															<p>Twitter</p>
-													</div>
-											</div>
-											<div class="content-area">
-													<div class="iframe-width560">
-															<p>
-																	< iframe width="560" height="315" src="https://www.youtube.com/embed/fV8dqctTNgE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>< /iframe>
-															</p>
-													</div>
-											</div>
-											<div class="copy-link">
-													<div class="fanease-url inline-block">
-															fanease.com/my_video
-													</div>
-													<div class="copy inline-block">
-															COPY
-													</div>
-											</div>
-										</div>
-								</div>
-						</div>
-				</div>
-		</div> -->
+    </div>
+    <app-footer></app-footer>
+  </div>
 </div>

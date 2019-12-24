@@ -1,0 +1,49 @@
+<div class="container">
+
+    <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Featured Videos</h1>
+  
+    <hr class="mt-2 mb-5">
+  
+    <div class="row text-center text-lg-left">
+        
+      <div class="col-lg-4 col-md-4 col-4" *ngFor="let item of videosCount">
+     
+            <a href (click)="showModalPopup()" class="d-block mb-4 h-100" type="button" data-toggle="modal" data-target="#myModal" >
+                <i class="fa fa-play" aria-hidden="true"></i>
+                <img class="img-fluid img-thumbnail" src="/assets/images/output.png" alt="">
+            </a>
+          <!-- <iframe frameborder="0" height="400" style="padding-left: 20px;" src="http://localhost:4200/#/embed/tgbNymZ7vqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      </div>
+      &nbsp;
+  
+  </div>
+  <div *ngIf="showModal" id="myModal" class="modal fade bd-example-modal-sm bd-example-modal-lg">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                    <div class="header-block">
+                            <div class="close" data-dismiss="modal">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    <div class="iframe">
+                            <iframe frameborder="0" style="padding-left: 20px;" src="http://localhost:4200/#/embed/tgbNymZ7vqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="media-icons">
+                            
+                            <div class="inline-block">
+                                <img src="/assets/images/fb.png">
+                                <p>Facebook</p>
+                            </div>
+                            <div class="inline-block">
+                                <img src="/assets/images/twitter.png">
+                                <p>Twitter</p>
+                            </div>
+                            <div class="inline-block">
+                                <img src="/assets/images/youtube.png">
+                                <p>YouTube</p>
+                            </div>
+                        </div>
+            </div>
+        </div>
+  </div>

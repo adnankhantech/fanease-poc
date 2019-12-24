@@ -7,13 +7,19 @@ import {AppRoutingModule} from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
+import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
+import { VideoAdComponent } from './shared/components/video-ad/video-ad.component';
+import { VideosComponent } from './components/videos/videos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    VideoEmbedComponent,
+    VideoAdComponent,
+    VideosComponent
   ],
   imports: [
     BrowserModule,

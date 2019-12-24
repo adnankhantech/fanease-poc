@@ -1,0 +1,31 @@
+iframe{
+    width:500px;
+    height:400px;
+}
+
+.modal-dialog {
+    max-width: 540px !important;
+}
+
+.media-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .media-icons img {
+    margin-right: 50px;
+  }
+.fa-play{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 68px;
+    height: 48px;
+    margin-left: -34px;
+    margin-top: -24px;
+    -moz-transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
+    -webkit-transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
+    transition: opacity .25s cubic-bezier(0.0,0.0,0.2,1);
+    z-index: 63;
+}
