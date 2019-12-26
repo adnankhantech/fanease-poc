@@ -15,29 +15,40 @@
     opacity:1;
   }
 }
+#logo-images{
+  position: relative;
+  margin: 0 auto;
+}
 
-#cf4a img:nth-of-type(1) {
+#logo-images img:nth-of-type(1) {
   animation-delay: 6s;
 }
-#cf4a img:nth-of-type(2) {
+#logo-images img:nth-of-type(2) {
   animation-delay: 4s;
 }
-#cf4a img:nth-of-type(3) {
+#logo-images img:nth-of-type(3) {
   animation-delay: 2s;
 }
-#cf4a img {
+
+#logo-images img:nth-of-type(4) {
+  animation-delay: 8s;
+}
+#logo-images img {
   animation-name: cf4FadeInOut;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-duration: 8s;
   position: absolute;
   left: 0;
+  opacity: 0;
+  z-index: 9999;
 }
 
-.overlay-logo{
-  bottom: 6.5em !important;
-  left: 420px !important;
+.video-js .vjs-overlay-bottom{
+  bottom: 6.9em;
+  left: 60%;
 }
+
 .wrapper {
     /* background: linear-gradient(rgba(252,92,125,.5),rgba(106,130,251,.5)), url("/assets/images/mountain.jpg") no-repeat center center; */
     /* height: calc(100vh - 50px); */
@@ -1014,6 +1025,12 @@
       /* bottom: 15.5em !important; */
     }
   
+  }
+  @media (min-width: 1024px) and (max-width: 1400px) {
+    .vjs-overlay-bottom{
+      // bottom: 6.9em !important;
+      // left: 490px;
+    }
   }
   @media (min-width: 576px) and (max-width: 970px) {
    

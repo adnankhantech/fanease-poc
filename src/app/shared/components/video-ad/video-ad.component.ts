@@ -28,17 +28,17 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.deviceInfo = this.deviceService.getDeviceInfo().userAgent;
     console.log('inside video-ad component ngAfterViewInit', this.deviceInfo);
-    if(this.checkIfMobileDevice()) {
+    if (this.checkIfMobileDevice()) {
       this.videoJSplayer = videojs('');
     } else {
       this.videoJSplayer = videojs('video_player');
-      this.videoJSInit();
-      this.generateClickEvent();
       this.videoJSplayer.on('ended', () => {
         window.location.reload();
       });
       this.videoJSplayer.on('play', () => {
-        console.log("video played")
+       
+        this.videoJSInit();
+        this.generateClickEvent();
         this.showModal = true;
       });
       this.playerModificationForFullScreen();
@@ -46,14 +46,14 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   }
 
   playerModificationForFullScreen(){
-    this.videoJSplayer.on('fullscreenchange', ()=>{
-      let overlay_first = this.elementRef.nativeElement.querySelector('.overlay-first-initial');
-      let overlay_second = this.elementRef.nativeElement.querySelector('.overlay-second-initial');
-      let overlay_third = this.elementRef.nativeElement.querySelector('.overlay-third-initial');
-      let overlay_fourth =  this.elementRef.nativeElement.querySelector('.overlay-fourth');
-      let overlay_second_expanded = this.elementRef.nativeElement.querySelector('.overlay-second-expanded');
-      let overlay_third_expanded = this.elementRef.nativeElement.querySelector('.overlay-third-expanded');
-
+    this.videoJSplayer.on('fullscreenchange', () => {
+      const overlay_first = this.elementRef.nativeElement.querySelector('.overlay-first-initial');
+      const overlay_second = this.elementRef.nativeElement.querySelector('.overlay-second-initial');
+      const overlay_third = this.elementRef.nativeElement.querySelector('.overlay-third-initial');
+      const overlay_fourth =  this.elementRef.nativeElement.querySelector('.overlay-fourth');
+      const overlay_second_expanded = this.elementRef.nativeElement.querySelector('.overlay-second-expanded');
+      const overlay_third_expanded = this.elementRef.nativeElement.querySelector('.overlay-third-expanded');
+      const overlay_logo = this.elementRef.nativeElement.querySelector('.overlay-logo');
       if (window.innerWidth <= 480){
           if (this.videoJSplayer.isFullscreen()){
             this.renderer.setStyle(overlay_first, 'top', '235px');
@@ -139,6 +139,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           this.renderer.setStyle(overlay_first, 'top', '50px');
           this.renderer.setStyle(overlay_second, 'bottom', '6.5em');
           this.renderer.setStyle(overlay_third, 'bottom', '10.5em');
+          this.renderer.setStyle(overlay_logo, 'left', '60%');
         }
         else{
           if (overlay_first){
@@ -159,6 +160,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           if(overlay_third_expanded){
             this.renderer.setStyle(overlay_third_expanded, 'top', '50px');
           }
+          this.renderer.setStyle(overlay_logo, 'left', '600px');
         }
       }
     })
@@ -328,21 +330,21 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
           <div class="img-wrap">
           <a href="https://www.golfposer.com/nike-golf-shirt-vapor-solid-habanero-red-ss19" target="_blank">
-          <div class="logo-container">                            
-          <img src="../../../assets/images/golferlogo.svg" class="logo">  
+          <div class="logo-container">
+          <img src="../../../assets/images/golferlogo.svg" class="logo">
           </div>
-          <div> 
-          <img src="../../../assets/images/Group 23@2x.png" class="golferTshirt">       
+          <div>
+          <img src="../../../assets/images/Group 23@2x.png" class="golferTshirt">
           </div>
           </div>
           </div>
       </div>
     </div>`,
-    overlay_content_logo: `<div id="cf4a" class="shadow">
+    overlay_content_logo: `<div id="logo-images" class="shadow">
     <img src="../../../assets/images/fb.png">
     <img src="../../../assets/images/twitter.png">
     <img src="../../../assets/images/youtube.png">
-    <img src="../../../assets/images/NIKE_logo.png">
+    <img src="../../../assets/images/Group 4.png">
   </div>`
     };
     return this.templateObj;
@@ -374,10 +376,9 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         class: 'overlay-third-initial'
       },
       {
-        start: 1,
+        start: 0,
         content: templateObj.overlay_content_logo,
-        end: 'playing',
-        align: 'bottom-left',
+        align: 'bottom',
         class: 'overlay-logo'
       }]
     });
@@ -403,8 +404,14 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           end: 166,
           align: 'bottom-left',
           class: 'overlay-third-expanded'
+        },
+        {
+          start: 0,
+          content: templateObj.overlay_content_logo,
+          align: 'bottom-left',
+          class: 'overlay-logo'
         }]
-    })
+    });
     this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
     this.generateDynamicEventsBasedonElement('.box4', '.box4 .close');
 
@@ -468,8 +475,14 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           end: 166,
           align: 'bottom-left',
           class: 'overlay-third-initial'
+        },
+        {
+          start: 0,
+          content: templateObj.overlay_content_logo,
+          align: 'bottom-left',
+          class: 'overlay-logo'
         }]
-    })
+    });
     this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
     this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
     this.generateDynamicEventsBasedonElement('.box5', '.box5 .close');
@@ -543,8 +556,14 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           end: 166,
           align: 'bottom-left',
           class: 'overlay-third-initial'
+        },
+        {
+          start: 0,
+          content: templateObj.overlay_content_logo,
+          align: 'bottom-left',
+          class: 'overlay-logo'
         }]
-    })
+    });
     this.generateDynamicEventsBasedonElement('.box1 .rectangle', '.box1 .close');
     this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
     this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
