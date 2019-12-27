@@ -1,17 +1,17 @@
 import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, ViewChild, RendererStyleFlags2, OnDestroy} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import {_getVideoSrc} from '../../constant';
 
 declare let videojs: any;
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   private videoJSplayer: any;
   templateObj: any;
   deviceInfo = null;
@@ -31,11 +31,11 @@ export class HomeComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    if(this.checkIfMobileDevice()) {
-      this.videoSrc = 'https://d3bvzl6owxj5uv.cloudfront.net/output_third.mov';
-    } else {
-      this.videoSrc = 'https://d3bvzl6owxj5uv.cloudfront.net/Cropped_vid_for_POC.mov';
-    }
+    this.videoSrc =  _getVideoSrc(this.deviceService);
+  }
+
+  ngOnDestroy(): void {
+    console.log('home component destroyed');
   }
 }
 

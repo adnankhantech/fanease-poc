@@ -5,17 +5,18 @@ iframe{
 
 .modal-dialog {
     max-width: 540px !important;
+    margin-top: 100px !important;
 }
 
 .media-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .media-icons img {
-    margin-right: 50px;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-icons img {
+  margin-right: 50px;
+}
 .fa-play{
     position: absolute;
     left: 50%;
@@ -31,4 +32,8 @@ iframe{
 }
 .video-container{
   padding-top: 5rem !important;
+}
+
+.medium-icon{
+  font-size: 18px;
 }

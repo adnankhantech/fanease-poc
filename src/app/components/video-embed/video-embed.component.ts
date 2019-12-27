@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import {_getVideoSrc} from '../../constant';
 
 @Component({
   selector: 'app-video-embed',
@@ -14,17 +15,6 @@ export class VideoEmbedComponent implements OnInit {
 
   ngOnInit() {
     this.videoClass = 'video-embed';
-    if (this.checkIfMobileDevice()) {
-      this.videoSrc = 'https://d3bvzl6owxj5uv.cloudfront.net/output_third.mov';
-    } else {
-      this.videoSrc = 'https://d3bvzl6owxj5uv.cloudfront.net/Cropped_vid_for_POC.mov';
-    }
+    this.videoSrc =  _getVideoSrc(this.deviceService);
   }
-
-  checkIfMobileDevice(){
-    // return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/)!= null) || (this.deviceService.getDeviceInfo().userAgent.match(/iPad/)!=null) 
-    return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/) != null);
-  }
-  
-
 }

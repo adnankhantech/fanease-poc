@@ -398,7 +398,7 @@
     width: 555px;
     height: 74px;
     border-radius: 6px;
-    background-color: #f6f6f6;
+    // background-color: #f6f6f6;
   }
   
   .btn-spacing{
@@ -644,6 +644,9 @@
     bottom: 16.5em;
   }
   
+  .video-section .video-js {
+    height: 568px;
+  }
   @media (min-width: 991px) and (max-width: 1800px) {
   .overlay-second-initial, .overlay-second-expanded{
     /* bottom: 6.5em !important; */
