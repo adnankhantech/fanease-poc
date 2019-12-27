@@ -36,7 +36,6 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         window.location.reload();
       });
       this.videoJSplayer.on('play', () => {
-       
         this.videoJSInit();
         this.generateClickEvent();
         this.showModal = true;

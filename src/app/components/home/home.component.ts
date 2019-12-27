@@ -25,11 +25,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     // this.checkIfMobileDevice();
   }
   
-  checkIfMobileDevice(){
-    // return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/)!= null) || (this.deviceService.getDeviceInfo().userAgent.match(/iPad/)!=null) 
-    return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/) != null);
-  }
-  
   ngOnInit(): void {
     this.videoSrc =  _getVideoSrc(this.deviceService);
   }
