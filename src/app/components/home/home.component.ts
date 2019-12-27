@@ -21,10 +21,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService) {
-    // this.checkIfMobileDevice();
-  }
-  
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService) {}
+
   ngOnInit(): void {
     this.videoSrc =  _getVideoSrc(this.deviceService);
   }

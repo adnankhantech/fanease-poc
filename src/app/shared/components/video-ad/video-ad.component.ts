@@ -27,7 +27,6 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.deviceInfo = this.deviceService.getDeviceInfo().userAgent;
-    console.log('inside video-ad component ngAfterViewInit', this.deviceInfo);
     if (this.checkIfMobileDevice()) {
       this.videoJSplayer = videojs('');
     } else {

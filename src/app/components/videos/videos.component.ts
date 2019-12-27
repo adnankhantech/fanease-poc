@@ -7,6 +7,7 @@ import {_getVideoSrc} from '../../constant';
   templateUrl: './videos.component.html',
   styleUrls: ['./videos.component.scss']
 })
+
 export class VideosComponent implements OnInit {
   videosCount = [];
   videoSrc: any;

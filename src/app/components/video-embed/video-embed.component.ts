@@ -7,10 +7,12 @@ import {_getVideoSrc} from '../../constant';
   templateUrl: './video-embed.component.html',
   styleUrls: ['./video-embed.component.scss']
 })
+
 export class VideoEmbedComponent implements OnInit {
 
   videoSrc: any;
   videoClass: any;
+
   constructor(private deviceService: DeviceDetectorService) { }
 
   ngOnInit() {
