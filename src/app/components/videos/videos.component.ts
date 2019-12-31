@@ -14,8 +14,8 @@ export class VideosComponent implements OnInit {
   showModal = false;
 
   constructor(private deviceService: DeviceDetectorService) {
-    this.videosCount = Array(9).fill(0).map((x, i) => i);
-   }
+    this.videosCount = Array(6).fill(0).map((x, i) => i);
+  }
 
    ngOnInit() {
     this.videoSrc =  _getVideoSrc(this.deviceService);
