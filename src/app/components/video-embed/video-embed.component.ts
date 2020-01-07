@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {_getVideoSrc} from '../../constant';
 
-
 @Component({
   selector: 'app-video-embed',
   templateUrl: './video-embed.component.html',
