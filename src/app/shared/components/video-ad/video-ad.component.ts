@@ -344,7 +344,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     <img src="../../../assets/images/youtube.png">
     <img src="../../../assets/images/Group 4.png">
   </div>`
-    };
+  };
     return this.templateObj;
   }
 
