@@ -406,7 +406,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         {
           start: 0,
           content: templateObj.overlay_content_logo,
-          align: 'bottom-left',
+          align: 'bottom',
           class: 'overlay-logo'
         }]
     });
@@ -477,7 +477,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         {
           start: 0,
           content: templateObj.overlay_content_logo,
-          align: 'bottom-left',
+          align: 'bottom',
           class: 'overlay-logo'
         }]
     });
@@ -558,7 +558,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         {
           start: 0,
           content: templateObj.overlay_content_logo,
-          align: 'bottom-left',
+          align: 'bottom',
           class: 'overlay-logo'
         }]
     });
