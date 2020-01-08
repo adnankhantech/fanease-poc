@@ -12,9 +12,11 @@ declare let videojs: any;
 })
 export class VideoAdComponent implements AfterViewInit, OnDestroy {
   private videoJSplayer: any;
+  private videoJSplayerAnimation: any;
   templateObj: any;
   deviceInfo = null;
   showModal = true;
+  showSkipAd = true;
   @Input() videoSrc?: string;
   @Input() videoClass?: string;
   @ViewChild('hiddenBtn') myHiddenBtn: ElementRef;
@@ -27,20 +29,24 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.deviceInfo = this.deviceService.getDeviceInfo().userAgent;
+    this.videoJSplayer = videojs('video_player');
     if (this.checkIfMobileDevice()) {
-      this.videoJSplayer = videojs('');
+      this.videoJSplayer.src('/assets/videos/animation_mobile.mp4');
     } else {
-      this.videoJSplayer = videojs('video_player');
-      this.videoJSplayer.on('ended', () => {
-        window.location.reload();
-      });
+      this.videoJSplayer.src('/assets/videos/animation_web.mp4');
       this.videoJSplayer.on('play', () => {
         this.videoJSInit();
         this.generateClickEvent();
-        this.showModal = true;
       });
-      this.playerModificationForFullScreen();
     }
+    this.videoJSplayer.on('ended', () => {
+      this.showSkipAd =  false;
+      this.videoJSplayer.src(this.videoSrc);
+      this.videoJSInit();
+      //window.location.reload();
+    });
+    
+    this.playerModificationForFullScreen();
   }
 
   playerModificationForFullScreen(){
@@ -165,8 +171,6 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   }
 
   generateClickEvent() {
-    this.videoJSplayer.on('play', () => {
-      
       this.generateDynamicEventsBasedonElement('.box1 .rectangle', '.box1 .close');
       this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
       this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
@@ -179,9 +183,16 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       }
       this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
       this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
-    })
+      this.elementRef.nativeElement.querySelector('.skip-btn').addEventListener('click', this.skipVideo.bind(this));
   }
 
+  skipVideo(){
+    this.videoJSplayer.src(this.videoSrc);
+    this.showSkipAd =  false;
+    this.videoJSInit();
+    this.videoJSplayer.play();
+  }
+  
   generateDynamicEventsBasedonElement(adv_element_selector, close_element_selector) {
     let advElement = this.elementRef.nativeElement.querySelector(adv_element_selector);
     if (advElement) {
@@ -200,9 +211,11 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     let overlay_content_second;
     let overlay_content_third;
     let overlay_content_fourth;
+    let overlay_skip_ad;
     const overlay_content_logo = '';
 
     if(window.innerWidth <= 480){
+      overlay_skip_ad = `<a class="btn btn-info skip-btn text-decoration-none">Skip Intro <i class="fa fa-step-forward" aria-hidden="true"></i></a>`;
       overlay_content_first =  `
         <div class="box1">
       <div class="rectangle">
@@ -241,9 +254,9 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       <div class="close">
       <img class="close" src="/assets/images/group-28.png"></div>
       <img src="/assets/images/iphone-detail-ad1.png">
-    </div>`
-    }
-    else{
+    </div>`;
+    } else {
+      overlay_skip_ad = `<a class="btn btn-info skip-btn text-decoration-none">Skip Intro <i class="fa fa-step-forward" aria-hidden="true"></i></a>`;
       overlay_content_first = `<div class="box1">
       <div class="rectangle">
         <img  class="close" src="/assets/images/group-37.png">
@@ -256,8 +269,8 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           <p style="margin-top: -12px;"><b>77 &#8457;</b></p>
         </div>
         </div>
-        </div>`
-        overlay_content_second=`<div class="box2">
+        </div>`;
+        overlay_content_second = `<div class="box2">
         <div class="rectangle ">
           <img class="close" src="/assets/images/group-37.png">
           <div class="image-block">
@@ -300,6 +313,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     </div>`
     }
     this.templateObj = {
+      overlay_skip_ad: overlay_skip_ad,
       overlay_content_first: overlay_content_first,
       overlay_content_second: overlay_content_second,
       overlay_content_third: overlay_content_third,
@@ -352,7 +366,13 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     const templateObj = this.generateTemplateForOverlay();
     this.videoJSplayer.overlay({
       debug: true,
-      overlays: [{
+      overlays: [
+        {
+          start: 0,
+          content: this.showSkipAd ? templateObj.overlay_skip_ad : '',
+          align: 'bottom-right',
+          class: 'overlay-skip-ad'
+        }, {
         start: 19,
         content: templateObj.overlay_content_first,
         end: 55,
@@ -374,7 +394,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         class: 'overlay-third-initial'
       },
       {
-        start: 0,
+        start: 1,
         content: templateObj.overlay_content_logo,
         align: 'bottom',
         class: 'overlay-logo'
