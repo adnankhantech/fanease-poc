@@ -193,7 +193,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       }
       this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
       this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
-      this.elementRef.nativeElement.querySelector('.skip-btn').addEventListener('click', this.skipVideo.bind(this));
+      this.elementRef.nativeElement.querySelector('.skip-btn')? this.elementRef.nativeElement.querySelector('.skip-btn').addEventListener('click', this.skipVideo.bind(this)) : '';
   }
 
   skipVideo(){
