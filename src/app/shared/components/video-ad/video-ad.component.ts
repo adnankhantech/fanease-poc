@@ -1,8 +1,10 @@
 import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, ViewChild, RendererStyleFlags2, OnDestroy, Input} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import {GoogleAnalyticsEventsService} from "../../../google-analytics-events.service";
 
 declare let videojs: any;
+// declare let ga: Function;
 
 @Component({
   selector: 'app-video-ad',
@@ -21,7 +23,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   @Input() videoClass?: string;
   @ViewChild('hiddenBtn') myHiddenBtn: ElementRef;
 
- constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService) {}
+ constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService, private  googleAnalyticsEventsService: GoogleAnalyticsEventsService) {}
 
   checkIfMobileDevice(){
     return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/) != null);
@@ -36,13 +38,21 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       this.videoJSplayer.src('/assets/videos/animation_web.mp4');
       this.videoJSplayer.on('play', () => {
         this.videoJSInit();
+        this.googleAnalyticsEventsService.emitEvent('fanease video', 'play', 20);
         this.generateClickEvent();
       });
     }
+
+    this.videoJSplayer.on('pause', () => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', 'paused', 10);
+    });
+
     this.videoJSplayer.on('ended', () => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', 'end', 0);
       this.showSkipAd =  false;
       this.videoJSplayer.src(this.videoSrc);
       this.videoJSInit();
+      this.videoJSplayer.play();
       //window.location.reload();
     });
     
@@ -190,6 +200,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     this.videoJSplayer.src(this.videoSrc);
     this.showSkipAd =  false;
     this.videoJSInit();
+    this.googleAnalyticsEventsService.emitEvent('fanease video', 'skipped', 30);
     this.videoJSplayer.play();
   }
   
@@ -323,7 +334,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       <div class="close">
           <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
       <div class="img-wrap">
-      <a href="https://www.taylormadegolf.com/M6-Fairway/N7310509.html?gclid=EAIaIQobChMIqI2s7oG15QIVkIbACh0BzQ_JEAQYAyABEgK4YvD_BwE&kpid=go_2018855898_74490452867_354265192544_pla-605273289299_c&utm_campaign=Seer_Shopping_Smart_HM&utm_medium=cpc&utm_device=c&utm_adgroup=N7310509&lang=default&utm_location=US&utm_source=google&utm_account=taylormadegolf&utm_content=354265192544" target="_blank">         
+      <a  onclick="ga('send', 'event', 'Expanded Ad Two', 'clicked');" href="https://www.taylormadegolf.com/M6-Fairway/N7310509.html?gclid=EAIaIQobChMIqI2s7oG15QIVkIbACh0BzQ_JEAQYAyABEgK4YvD_BwE&kpid=go_2018855898_74490452867_354265192544_pla-605273289299_c&utm_campaign=Seer_Shopping_Smart_HM&utm_medium=cpc&utm_device=c&utm_adgroup=N7310509&lang=default&utm_location=US&utm_source=google&utm_account=taylormadegolf&utm_content=354265192544" target="_blank">         
       </div>
           <div class="img-wrap">
               <div class="logo-container">                            
@@ -341,7 +352,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           <div class="close">
           <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
           <div class="img-wrap">
-          <a href="https://www.golfposer.com/nike-golf-shirt-vapor-solid-habanero-red-ss19" target="_blank">
+          <a onclick="ga('send', 'event', 'Expanded Ad Three', 'clicked');" href="https://www.golfposer.com/nike-golf-shirt-vapor-solid-habanero-red-ss19" target="_blank">
           <div class="logo-container">
           <img src="../../../assets/images/golferlogo.svg" class="logo">
           </div>
@@ -405,7 +416,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   viewDetailAdThree() {
     let templateObj = this.generateTemplateForOverlay();
     let isFullscreen = this.videoJSplayer.isFullscreen();
-
+    this.googleAnalyticsEventsService.emitEvent('Initial Ad Three', 'clicked');
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [
@@ -469,7 +480,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     let templateObj = this.generateTemplateForOverlay();
     let isFullscreen =  this.videoJSplayer.isFullscreen();
     let overlay_third = this.elementRef.nativeElement.querySelector('.overlay-third-initial');
-
+    this.googleAnalyticsEventsService.emitEvent('Initial Ad Two', 'clicked');
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [
@@ -543,7 +554,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     let isFullscreen = this.videoJSplayer.isFullscreen();
     let templateObj = this.generateTemplateForOverlay();
     let overlay_second = this.elementRef.nativeElement.querySelector('.overlay-second-initial');
-        
+    this.googleAnalyticsEventsService.emitEvent('Initial Ad One', 'opened');
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [

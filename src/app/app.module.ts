@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import {GoogleAnalyticsEventsService} from "./google-analytics-events.service";
+
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -26,7 +28,9 @@ import { VideosComponent } from './components/videos/videos.component';
     AppRoutingModule,
     DeviceDetectorModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    GoogleAnalyticsEventsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
