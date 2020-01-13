@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, ViewChild, RendererStyleFlags2, OnDestroy, Input} from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import {GoogleAnalyticsEventsService} from "../../../google-analytics-events.service";
+import {GoogleAnalyticsEventsService} from '../../../google-analytics-events.service';
 
 declare let videojs: any;
 // declare let ga: Function;
@@ -23,7 +23,9 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   @Input() videoClass?: string;
   @ViewChild('hiddenBtn') myHiddenBtn: ElementRef;
 
- constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService, private  googleAnalyticsEventsService: GoogleAnalyticsEventsService) {}
+ constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService, private  googleAnalyticsEventsService: GoogleAnalyticsEventsService) {
+   
+ }
 
   checkIfMobileDevice(){
     return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/) != null);
@@ -31,32 +33,89 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.deviceInfo = this.deviceService.getDeviceInfo().userAgent;
-    this.videoJSplayer = videojs('video_player');
+    this.videoJSplayer = videojs('video_player', {plugins: { eventTracking: true } });
     if (this.checkIfMobileDevice()) {
       this.videoJSplayer.src('/assets/videos/animation_mobile.mp4');
+      this.sendTimeBasedEventsToGA();
+      this.generateEventsOnVideoEnd();
+      this.generateEventsOnVideoPlay();
     } else {
       this.videoJSplayer.src('/assets/videos/animation_web.mp4');
-      this.videoJSplayer.on('play', () => {
-        this.videoJSInit();
-        this.googleAnalyticsEventsService.emitEvent('fanease video', 'play', 20);
-        this.generateClickEvent();
-      });
+      this.sendTimeBasedEventsToGA();
+      this.generateEventsOnVideoPlay();
+      this.generateEventsOnVideoEnd();
+      this.playerModificationForFullScreen();
+      this.calculatePercentageOfVideoWatched();
     }
+    this.generateEventsOnVideoPause();
+  }
 
-    this.videoJSplayer.on('pause', () => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', 'paused', 10);
+  calculatePercentageOfVideoWatched() {
+    this.videoJSplayer.on('tracking:first-quarter', (e, data) => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', '25% watched');
+      // console.log(this.videoJSplayer.currentTime());
+      console.log(data);
     });
 
+    this.videoJSplayer.on('tracking:second-quarter', (e, data) => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', '50% watched');
+      // console.log(this.videoJSplayer.currentTime());
+      console.log(data);
+    });
+
+    this.videoJSplayer.on('tracking:third-quarter', (e, data) => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', '75% watched');
+      console.log(data);
+    });
+
+    this.videoJSplayer.on('tracking:fourth-quarter', (e, data) => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', '100% watched');
+      console.log(data);
+    });
+  }
+  generateEventsOnVideoPause() {
+    this.videoJSplayer.on('pause', () => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', 'paused');
+    });
+  }
+  generateEventsOnVideoPlay() {
+    this.videoJSplayer.on('play', () => {
+      if (!this.checkIfMobileDevice()) {
+        this.videoJSInit();
+        this.generateClickEvent();
+      }
+
+      if (this.videoJSplayer.src().match(/animation_web/) == null) {
+        // this.calculatePercentageOfVideoWatched();
+      }
+      this.googleAnalyticsEventsService.emitEvent('fanease video', 'play');
+    });
+  }
+  
+  generateEventsOnVideoEnd() {
     this.videoJSplayer.on('ended', () => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', 'end', 0);
+      this.googleAnalyticsEventsService.emitEvent('Video Watched', 'end');
       this.showSkipAd =  false;
       this.videoJSplayer.src(this.videoSrc);
-      this.videoJSInit();
+      if (!this.checkIfMobileDevice()) {
+        this.videoJSInit();
+      }
       this.videoJSplayer.play();
-      //window.location.reload();
     });
-    
-    this.playerModificationForFullScreen();
+  }
+  sendTimeBasedEventsToGA() {
+    this.videoJSplayer.on('timeupdate', () => {
+      const currentVideoTime = parseFloat(this.videoJSplayer.currentTime().toFixed(2));
+      if (currentVideoTime >= 19.00 && currentVideoTime <= 19.20 ) {
+        this.googleAnalyticsEventsService.emitEvent('initial ad 1', 'viewed');
+      }
+      if (currentVideoTime >= 70.00 && currentVideoTime <= 70.20 ) {
+        this.googleAnalyticsEventsService.emitEvent('initial ad 2', 'viewed');
+      }
+      if (currentVideoTime >= 145.00 && currentVideoTime <= 145.20 ) {
+        this.googleAnalyticsEventsService.emitEvent('initial ad 3', 'viewed');
+      }
+    });
   }
 
   playerModificationForFullScreen(){
@@ -200,7 +259,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     this.videoJSplayer.src(this.videoSrc);
     this.showSkipAd =  false;
     this.videoJSInit();
-    this.googleAnalyticsEventsService.emitEvent('fanease video', 'skipped', 30);
+    this.googleAnalyticsEventsService.emitEvent('fanease video', 'skipped');
     this.videoJSplayer.play();
   }
   
