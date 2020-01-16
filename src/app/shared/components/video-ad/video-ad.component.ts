@@ -84,7 +84,6 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         this.videoJSInit();
         this.generateClickEvent();
       }
-
       if (this.videoJSplayer.src().match(/animation_web/) == null) {
         // this.calculatePercentageOfVideoWatched();
       }
@@ -106,13 +105,13 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   sendTimeBasedEventsToGA() {
     this.videoJSplayer.on('timeupdate', () => {
       const currentVideoTime = parseFloat(this.videoJSplayer.currentTime().toFixed(2));
-      if (currentVideoTime >= 19.00 && currentVideoTime <= 19.20 ) {
+      if (currentVideoTime >= 19.00 && currentVideoTime <= 19.30 ) {
         this.googleAnalyticsEventsService.emitEvent('initial ad 1', 'viewed');
       }
-      if (currentVideoTime >= 70.00 && currentVideoTime <= 70.20 ) {
+      if (currentVideoTime >= 70.00 && currentVideoTime <= 70.30 ) {
         this.googleAnalyticsEventsService.emitEvent('initial ad 2', 'viewed');
       }
-      if (currentVideoTime >= 145.00 && currentVideoTime <= 145.20 ) {
+      if (currentVideoTime >= 145.00 && currentVideoTime <= 145.30 ) {
         this.googleAnalyticsEventsService.emitEvent('initial ad 3', 'viewed');
       }
     });
@@ -120,6 +119,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
 
   playerModificationForFullScreen(){
     this.videoJSplayer.on('fullscreenchange', () => {
+      this.googleAnalyticsEventsService.emitEvent('fanease video', 'fullscreen mode');
       const overlay_first = this.elementRef.nativeElement.querySelector('.overlay-first-initial');
       const overlay_second = this.elementRef.nativeElement.querySelector('.overlay-second-initial');
       const overlay_third = this.elementRef.nativeElement.querySelector('.overlay-third-initial');
