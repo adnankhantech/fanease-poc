@@ -53,24 +53,18 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   calculatePercentageOfVideoWatched() {
     this.videoJSplayer.on('tracking:first-quarter', (e, data) => {
       this.googleAnalyticsEventsService.emitEvent('fanease video', '25% watched');
-      // console.log(this.videoJSplayer.currentTime());
-      console.log(data);
     });
 
     this.videoJSplayer.on('tracking:second-quarter', (e, data) => {
       this.googleAnalyticsEventsService.emitEvent('fanease video', '50% watched');
-      // console.log(this.videoJSplayer.currentTime());
-      console.log(data);
     });
 
     this.videoJSplayer.on('tracking:third-quarter', (e, data) => {
       this.googleAnalyticsEventsService.emitEvent('fanease video', '75% watched');
-      console.log(data);
     });
 
     this.videoJSplayer.on('tracking:fourth-quarter', (e, data) => {
       this.googleAnalyticsEventsService.emitEvent('fanease video', '100% watched');
-      console.log(data);
     });
   }
   generateEventsOnVideoPause() {
