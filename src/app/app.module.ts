@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
 import { VideoAdComponent } from './shared/components/video-ad/video-ad.component';
 import { VideosComponent } from './components/videos/videos.component';
+import { VideoDescriptionContentComponent } from './components/video-description-content/video-description-content.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VideosComponent } from './components/videos/videos.component';
     HomeComponent,
     VideoEmbedComponent,
     VideoAdComponent,
-    VideosComponent
+    VideosComponent,
+    VideoDescriptionContentComponent
   ],
   imports: [
     BrowserModule,

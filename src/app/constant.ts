@@ -3,6 +3,6 @@ export function _getVideoSrc(deviceService) {
     if (checkIfMobileDevice) {
       return 'https://d3bvzl6owxj5uv.cloudfront.net/output_third.mov';
     } else {
-      return 'https://d3bvzl6owxj5uv.cloudfront.net/Cropped_vid_for_POC.mov';
+      return 'https://d3bvzl6owxj5uv.cloudfront.net/XFL-Roughnecks.mp4';
     }
 }

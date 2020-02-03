@@ -98,7 +98,7 @@ input:checked + .slider {
 
 .poc-footer .footer-rectangle {
   width: 100%;
-  height: 100%;
+  height: 280px;
   background-color: #000000;
 }
 
@@ -152,10 +152,11 @@ input:checked + .slider {
 }
 
 .poc-footer .left-content p {
-  width: 450px;
+  width: 251px;
   opacity: 0.4;
+  height: 100px;
   color: #fff;
-  margin: 15px;
+  margin: 0;
   text-align: justify;
 }
 
