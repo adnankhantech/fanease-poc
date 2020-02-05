@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import {GoogleAnalyticsEventsService} from "./google-analytics-events.service";
+import { CountdownModule } from 'ngx-countdown';
 
 
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { VideoDescriptionContentComponent } from './components/video-description
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CountdownModule,
     DeviceDetectorModule.forRoot()
   ],
   providers: [

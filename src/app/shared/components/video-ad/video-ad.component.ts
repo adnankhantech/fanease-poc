@@ -1,7 +1,9 @@
-import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, ViewChild, RendererStyleFlags2, OnDestroy, Input} from '@angular/core';
-import { ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer2, ViewChild, RendererStyleFlags2, OnDestroy, Input, Output} from '@angular/core';
+import { ViewEncapsulation, EventEmitter } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import {GoogleAnalyticsEventsService} from '../../../google-analytics-events.service';
+import { interval } from 'rxjs';
+// import { EventEmitter } from 'events';
 
 declare let videojs: any;
 // declare let ga: Function;
@@ -23,7 +25,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   @Input() videoClass?: string;
   @Input() videoAdTemplate?: string | any;
   @ViewChild('hiddenBtn') myHiddenBtn: ElementRef;
-
+ 
  constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService, private  googleAnalyticsEventsService: GoogleAnalyticsEventsService) {
    
  }
@@ -98,9 +100,27 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       this.videoJSplayer.play();
     });
   }
+
   sendTimeBasedEventsToGA() {
+    let showTimer = false;
+    
     this.videoJSplayer.on('timeupdate', () => {
       const currentVideoTime = parseFloat(this.videoJSplayer.currentTime().toFixed(2));
+      
+      if (currentVideoTime > 57.10 && currentVideoTime < 57.30){
+        const secondsCounter = interval(1000);
+        const start = 10;
+        let counter;
+        const subscription = secondsCounter.subscribe(number =>{
+          if (number === 11) {
+            subscription.unsubscribe();
+            return;
+          }
+          counter = start - number;
+          
+          this.elementRef.nativeElement.querySelector('.box3 .timer').innerText = counter < 10 ? '00:0' + counter + ' secs' : '00:' + counter + ' secs' ;
+        });
+      }
       if (currentVideoTime >= 19.00 && currentVideoTime <= 19.30 ) {
         this.googleAnalyticsEventsService.emitEvent('initial ad 1', 'viewed');
       }
@@ -132,7 +152,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         }
         else{
           if (overlay_first){
-            this.renderer.setStyle(overlay_first, 'top', '28px');
+            this.renderer.setStyle(overlay_first, 'top', '55px');
           }
           if(overlay_second){
             this.renderer.setStyle(overlay_second, 'bottom', '5.5em');
@@ -141,7 +161,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
             this.renderer.setStyle(overlay_third, 'bottom', '8.5em');
           }
           if(overlay_fourth){
-            this.renderer.setStyle(overlay_fourth, 'top', '30px');
+            this.renderer.setStyle(overlay_fourth, 'top', '55px');
           }
           if(overlay_second_expanded){
             this.renderer.setStyle(overlay_second_expanded, 'bottom', '5.5em');
@@ -154,25 +174,23 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       else if(window.innerWidth > 1024){
         if (this.videoJSplayer.isFullscreen()){
           this.renderer.setStyle(overlay_first, 'top', '50px');
+          this.renderer.setStyle(overlay_fourth, 'top', '48px');
           this.renderer.setStyle(overlay_second, 'bottom', '6.5em');
           this.renderer.setStyle(overlay_third, 'bottom', '10.5em');
           this.renderer.setStyle(overlay_logo, 'left', '60%');
         }
         else{
           if (overlay_first){
-            this.renderer.setStyle(overlay_first, 'top', '28px');
+            this.renderer.setStyle(overlay_first, 'top', '55px');
           }
           if(overlay_second){
-            this.renderer.setStyle(overlay_second, 'bottom', '5.5em');
+            this.renderer.setStyle(overlay_second, 'bottom', '3.5em');
           }
           if(overlay_third){
             this.renderer.setStyle(overlay_third, 'bottom', '8.5em');
           }
-          if(overlay_fourth){
-            this.renderer.setStyle(overlay_fourth, 'top', '30px');
-          }
           if(overlay_second_expanded){
-            this.renderer.setStyle(overlay_second_expanded, 'bottom', '5.5em');
+            this.renderer.setStyle(overlay_second_expanded, 'bottom', '3.5em');
           }
           if(overlay_third_expanded){
             this.renderer.setStyle(overlay_third_expanded, 'top', '50px');
@@ -184,24 +202,14 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   }
 
   generateClickEvent() {
-      this.generateDynamicEventsBasedonElement('box-ad-1', '.box-ad-1 .close');
+      this.generateDynamicEventsBasedonElement('.box-ad-1', '.box-ad-1 .close');
       this.generateDynamicEventsBasedonElement('.box2 .rectangle', '.box2 .close');
       this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
       
-      this.elementRef.nativeElement.querySelector('.box-ad-1').addEventListener('click', this.viewDetailAdOne.bind(this));
+      this.elementRef.nativeElement.querySelector('.box-ad-1 .view').addEventListener('click', this.viewDetailAdOne.bind(this));
       this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
-      this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
-      this.elementRef.nativeElement.querySelector('.skip-btn')? this.elementRef.nativeElement.querySelector('.skip-btn').addEventListener('click', this.skipVideo.bind(this)) : '';
   }
 
-  skipVideo(){
-    this.videoJSplayer.src(this.videoSrc);
-    this.showSkipAd =  false;
-    this.videoJSInit();
-    this.googleAnalyticsEventsService.emitEvent('fanease video', 'skipped');
-    this.videoJSplayer.play();
-  }
-  
   generateDynamicEventsBasedonElement(adv_element_selector, close_element_selector) {
     let advElement = this.elementRef.nativeElement.querySelector(adv_element_selector);
     if (advElement) {
@@ -220,24 +228,24 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
       {
-        start: 1,
+        start: 5,
         content: templateObj.overlay_content_first,
-        end: 55,
+        end: 26,
         align: 'top-right',
         class: 'overlay-first-initial'
       },
       {
-        start: 70,
+        start: 31,
         content: templateObj.overlay_content_second,
-        end: 90,
+        end: 48,
         align: 'bottom-right',
         class: 'overlay-second-initial'
       },
       {
-        start: 145,
+        start: 57,
         content: templateObj.overlay_content_third,
-        end: 166,
-        align: 'bottom-left',
+        end: 67,
+        align: 'bottom-right',
         class: 'overlay-third-initial'
       },
       {
@@ -257,46 +265,18 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
         {
-          start: 145,
+          start: 57,
           content: templateObj.overlay_content_third,
-          end: 166,
-          align: 'bottom-left',
+          end: 67,
+          align: 'bottom-right',
           class: 'overlay-third-initial'
-        },
-        {
-          start: 145,
-          content: templateObj.overlay_content_sixth,
-          end: 166,
-          align: 'bottom-left',
-          class: 'overlay-third-expanded'
-        },
-        {
-          start: 0,
-          content: templateObj.overlay_content_logo,
-          align: 'bottom',
-          class: 'overlay-logo'
         }]
     });
     this.generateDynamicEventsBasedonElement('.box3 .rectangle', '.box3 .close');
     this.generateDynamicEventsBasedonElement('.box4', '.box4 .close');
 
-    this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
 
-    if (window.innerWidth <= 480){
-      if(isFullscreen){
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '280px');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '25.5em');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'bottom', '25.5em');
-      }
-    }
-    else if (window.innerWidth == 768){
-      if(isFullscreen){
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '345px');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'bottom', '36.5em');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '36.5em');
-      }
-    }
-    else if(window.innerWidth == 1024){
+    if(window.innerWidth == 1024){
       if(isFullscreen){
         this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'top', '240px');
         this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-third-expanded'), 'bottom', '22.5em');
@@ -321,24 +301,24 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
         {
-          start: 70,
+          start: 31,
           content: templateObj.overlay_content_second,
-          end: 90,
+          end: 48,
           align: 'bottom-right',
           class: 'overlay-second-initial'
         },
         {
-          start: 70,
+          start: 31,
           content: templateObj.overlay_content_fifth,
-          end: 90,
+          end: 48,
           align: 'bottom-right',
           class: 'overlay-second-expanded'
         },
         {
-          start: 145,
+          start: 57,
           content: templateObj.overlay_content_third,
-          end: 166,
-          align: 'bottom-left',
+          end: 67,
+          align: 'bottom-right',
           class: 'overlay-third-initial'
         },
         {
@@ -353,23 +333,8 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     this.generateDynamicEventsBasedonElement('.box5', '.box5 .close');
 
     this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
-    this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
 
-    if (window.innerWidth <= 480){
-      if(isFullscreen){
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '25.5em');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '25.5em');
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '25.5em');
-      }
-    }
-    else if (window.innerWidth == 768){
-      if(isFullscreen){
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '33.5em');
-        this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '33.5em');
-        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '36.5em');
-      }
-    }
-    else if(window.innerWidth == 1024){
+if(window.innerWidth == 1024){
       if(isFullscreen){
         this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-expanded'), 'bottom', '15.5em');
         this.renderer.setStyle( this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '15.5em');
@@ -383,7 +348,6 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-third-initial'), 'bottom', '10.5em');
       }
   }
-    //this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.overlay-second-initial'), 'bottom', '25.5em');
   }
 
   viewDetailAdOne() {
@@ -395,31 +359,31 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
         {
-          start: 1,
+          start: 12,
           content: templateObj.overlay_content_first,
-          end: 55,
+          end: 26,
           align: 'top-right',
           class: 'overlay-first-initial'
         },
         {
-          start: 1,
+          start: 12,
           content: templateObj.overlay_content_fourth,
-          end: 55,
+          end: 26,
           align: 'top-right',
           class: 'overlay-fourth'
         },
         {
-          start: 70,
+          start: 31,
           content: templateObj.overlay_content_second,
-          end: 90,
+          end: 48,
           align: 'bottom-right',
           class: 'overlay-second-initial'
         },
         {
-          start: 145,
+          start: 57,
           content: templateObj.overlay_content_third,
-          end: 166,
-          align: 'bottom-left',
+          end: 67,
+          align: 'bottom-right',
           class: 'overlay-third-initial'
         },
         {
@@ -450,11 +414,8 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       }
     }
     
-
-    
-    this.elementRef.nativeElement.querySelector('.box-ad-1').addEventListener('click', this.viewDetailAdOne.bind(this));
+    this.elementRef.nativeElement.querySelector('.box-ad-1 .view').addEventListener('click', this.viewDetailAdOne.bind(this));
     this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
-    this.elementRef.nativeElement.querySelector('.box3 .view').addEventListener('click', this.viewDetailAdThree.bind(this));
     let el = this.elementRef.nativeElement.querySelector(".overlay-fourth");
     let regex = /^vjs-overlay-background$/;
     let classes = el.getAttribute('class').split(' ');
