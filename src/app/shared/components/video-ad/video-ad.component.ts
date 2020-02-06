@@ -99,18 +99,9 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           }
           counter = start - number;
           counterText = counter < 10 ? '00:0' + counter + ' secs' : '00:' + counter + ' secs';
-          console.log('counter', counter)
+          console.log('counter', counter);
           this.elementRef.nativeElement.querySelector('.box3 .timer').innerText = counterText;
         });
-      }
-      if (currentVideoTime >= 19.00 && currentVideoTime <= 19.30 ) {
-        this.googleAnalyticsEventsService.emitEvent('initial ad 1', 'viewed');
-      }
-      if (currentVideoTime >= 70.00 && currentVideoTime <= 70.30 ) {
-        this.googleAnalyticsEventsService.emitEvent('initial ad 2', 'viewed');
-      }
-      if (currentVideoTime >= 145.00 && currentVideoTime <= 145.30 ) {
-        this.googleAnalyticsEventsService.emitEvent('initial ad 3', 'viewed');
       }
     });
   }
