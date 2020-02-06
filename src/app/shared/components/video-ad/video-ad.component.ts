@@ -35,22 +35,13 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.deviceInfo = this.deviceService.getDeviceInfo().userAgent;
-    this.videoJSplayer = videojs('video_player', {plugins: { eventTracking: true } });
-    if (this.checkIfMobileDevice()) {
-      this.videoJSplayer.src('/assets/videos/animation_mobile.mp4');
-      this.sendTimeBasedEventsToGA();
-      this.generateEventsOnVideoEnd();
-      this.generateEventsOnVideoPlay();
-    } else {
-      // this.videoJSplayer.src('/assets/videos/animation_web.mp4');
+      this.videoJSplayer = videojs('video_player', {plugins: { eventTracking: true } });
       this.sendTimeBasedEventsToGA();
       this.generateEventsOnVideoPlay();
       this.generateEventsOnVideoEnd();
       this.playerModificationForFullScreen();
       this.calculatePercentageOfVideoWatched();
-    }
-    this.generateEventsOnVideoPause();
+      this.generateEventsOnVideoPause();
   }
 
   calculatePercentageOfVideoWatched() {
@@ -76,19 +67,14 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
     });
   }
   generateEventsOnVideoPlay() {
-    this.videoJSplayer.src(this.videoSrc);
+    this.videoJSplayer.src('https://d3bvzl6owxj5uv.cloudfront.net/FanEase_final_preroll.mp4');
     this.videoJSplayer.on('play', () => {
-      if (!this.checkIfMobileDevice()) {
-        this.videoJSInit();
-        this.generateClickEvent();
-      }
-      if (this.videoJSplayer.src().match(/animation_web/) == null) {
-        // this.calculatePercentageOfVideoWatched();
-      }
+      this.videoJSInit();
+      this.generateClickEvent();
       this.googleAnalyticsEventsService.emitEvent('fanease video', 'play');
     });
   }
-  
+
   generateEventsOnVideoEnd() {
     this.videoJSplayer.on('ended', () => {
       this.googleAnalyticsEventsService.emitEvent('Video Watched', 'end');
@@ -102,23 +88,21 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   }
 
   sendTimeBasedEventsToGA() {
-    let showTimer = false;
-    
     this.videoJSplayer.on('timeupdate', () => {
       const currentVideoTime = parseFloat(this.videoJSplayer.currentTime().toFixed(2));
-      
-      if (currentVideoTime > 57.10 && currentVideoTime < 57.30){
+      if (currentVideoTime > 57.10 && currentVideoTime < 57.30) {
         const secondsCounter = interval(1000);
         const start = 10;
         let counter;
-        const subscription = secondsCounter.subscribe(number =>{
-          if (number === 11) {
+        let counterText = '';
+        const subscription = secondsCounter.subscribe(number => {
+          if (number === 10) {
             subscription.unsubscribe();
             return;
           }
           counter = start - number;
-          
-          this.elementRef.nativeElement.querySelector('.box3 .timer').innerText = counter < 10 ? '00:0' + counter + ' secs' : '00:' + counter + ' secs' ;
+          counterText = counter < 10 ? '00:0' + counter + ' secs' : '00:' + counter + ' secs';
+          this.elementRef.nativeElement.querySelector('.box3 .timer').innerText = counterText;
         });
       }
       if (currentVideoTime >= 19.00 && currentVideoTime <= 19.30 ) {
