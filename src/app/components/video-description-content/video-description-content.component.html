@@ -60,3 +60,54 @@
         </div>
     </div>
 </div>
+<div *ngIf="showModal">
+    <div id="myModal" class="modal fade bd-example-modal-sm bd-example-modal-lg">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="header-block">
+                        <div class="close" data-dismiss="modal" #closeBtn>
+                            <i class="fa fa-times medium-icon" aria-hidden="true"></i>
+                        </div>
+                        <p class="Share-a-link">
+                            Share a link
+                        </p>
+                    </div>
+                    <div class="media-icons">
+                        <div class="inline-block">
+                            <img src="/assets/images/embed.png">
+                            <p>Embed</p>
+                        </div>
+                        <div class="inline-block">
+                            <img src="/assets/images/fb.png">
+                            <p>Facebook</p>
+                        </div>
+                        <div class="inline-block">
+                            <img src="/assets/images/twitter.png">
+                            <p>Twitter</p>
+                        </div>
+                        <div class="inline-block">
+                            <img src="/assets/images/youtube.png">
+                            <p>YouTube</p>
+                        </div>
+                    </div>
+                    <div class="content-area">
+                        <div class="iframe-width560">
+                            <p>
+                                < iframe width="560" height="315" src="https://www.youtube.com/embed/fV8dqctTNgE"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                    < /iframe> </p> </div> </div> <div class="copy-link">
+                                        <div class="fanease-url inline-block">
+                                            fanease.com/my_video
+                                        </div>
+                                        <div class="copy inline-block">
+                                            COPY
+                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

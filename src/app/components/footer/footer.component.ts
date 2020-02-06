@@ -7,16 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  showModal: boolean = false;
 
   copyrightYear = (new Date()).getFullYear();
   constructor() { }
 
   ngOnInit() {
   }
-  showModalPopup() {
-    this.showModal = true;
-  }
-
-
 }

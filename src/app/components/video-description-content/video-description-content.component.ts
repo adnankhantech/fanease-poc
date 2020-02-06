@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoDescriptionContentComponent implements OnInit {
 
+  showModal = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+  
+  showModalPopup() {
+    this.showModal = true;
   }
 
 }
