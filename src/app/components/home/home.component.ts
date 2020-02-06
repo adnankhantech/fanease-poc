@@ -48,12 +48,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     let overlay_content_third;
     let overlay_content_fourth;
     let overlay_content_fifth;
-    let overlay_content_sixth;
     let overlay_skip_ad;
     let overlay_content_logo = '';
+
+    overlay_skip_ad = `<a class="btn btn-info skip-btn text-decoration-none">Skip Intro <i class="fa fa-step-forward" aria-hidden="true"></i></a>`;
     
-      overlay_skip_ad = `<a class="btn btn-info skip-btn text-decoration-none">Skip Intro <i class="fa fa-step-forward" aria-hidden="true"></i></a>`;
-      overlay_content_first = `<div class="box-ad-1">
+    overlay_content_first = `<div class="box-ad-1">
       <div class="rectangle">
           <img class="close" src="/assets/images/xfl/close-white.png">
           <div class="image-block">
@@ -132,23 +132,6 @@ export class HomeComponent implements OnInit, OnDestroy {
               </div>
           </div>
         
-      </div>
-    </div>`;
-      overlay_content_sixth = `<div class="box-ad-1">
-      <div class="rectangle">
-          <img class="close" src="/assets/images/xfl/close-white.png">
-          <div class="image-block">
-            <img src="/assets/images/xfl/xfl-initial-ad3.png">
-          </div>
-        <div class="description">
-          <h2 class="M6-Driver">
-            <b>JUNE JONES</b>
-          </h2>
-         <br>
-          <a class="view">
-            View Product >
-          </a>
-        </div>
       </div>
     </div>`;
     overlay_content_logo = `<div id="logo-images" class="shadow">

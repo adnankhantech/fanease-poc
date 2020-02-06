@@ -25,53 +25,51 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
   @Input() videoClass?: string;
   @Input() videoAdTemplate?: string | any;
   @ViewChild('hiddenBtn') myHiddenBtn: ElementRef;
- 
- constructor(private elementRef: ElementRef, private renderer: Renderer2, private deviceService: DeviceDetectorService, private  googleAnalyticsEventsService: GoogleAnalyticsEventsService) {
-   
- }
 
-  checkIfMobileDevice(){
-    return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/) != null);
-  }
+ constructor(private elementRef: ElementRef, private renderer: Renderer2,
+  private deviceService: DeviceDetectorService, private  googleAnalyticsEventsService: GoogleAnalyticsEventsService) {
+ }
 
   ngAfterViewInit(): void {
       this.videoJSplayer = videojs('video_player', {plugins: { eventTracking: true } });
       this.sendTimeBasedEventsToGA();
-      this.generateEventsOnVideoPlay();
       this.generateEventsOnVideoEnd();
       this.playerModificationForFullScreen();
       this.calculatePercentageOfVideoWatched();
       this.generateEventsOnVideoPause();
+      this.setVideoPlayerSource();
   }
 
+  setVideoPlayerSource(){
+    return this.videoJSplayer.src('https://d3bvzl6owxj5uv.cloudfront.net/FanEase_final_preroll.mp4');
+  }
   calculatePercentageOfVideoWatched() {
     this.videoJSplayer.on('tracking:first-quarter', (e, data) => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', '25% watched');
+      this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', '25% watched');
     });
 
     this.videoJSplayer.on('tracking:second-quarter', (e, data) => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', '50% watched');
+      this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', '50% watched');
     });
 
     this.videoJSplayer.on('tracking:third-quarter', (e, data) => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', '75% watched');
+      this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', '75% watched');
     });
 
     this.videoJSplayer.on('tracking:fourth-quarter', (e, data) => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', '100% watched');
+      this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', '100% watched');
     });
   }
   generateEventsOnVideoPause() {
     this.videoJSplayer.on('pause', () => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', 'paused');
+      this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', 'paused');
     });
   }
   generateEventsOnVideoPlay() {
-    this.videoJSplayer.src('https://d3bvzl6owxj5uv.cloudfront.net/FanEase_final_preroll.mp4');
     this.videoJSplayer.on('play', () => {
-      this.videoJSInit();
-      this.generateClickEvent();
-      this.googleAnalyticsEventsService.emitEvent('fanease video', 'play');
+        this.videoJSInit();
+        this.generateClickEvent();
+        this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', 'play');
     });
   }
 
@@ -80,10 +78,9 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       this.googleAnalyticsEventsService.emitEvent('Video Watched', 'end');
       this.showSkipAd =  false;
       this.videoJSplayer.src(this.videoSrc);
-      if (!this.checkIfMobileDevice()) {
-        this.videoJSInit();
-      }
+      this.videoJSInit();
       this.videoJSplayer.play();
+      this.generateEventsOnVideoPlay();
     });
   }
 
@@ -102,6 +99,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           }
           counter = start - number;
           counterText = counter < 10 ? '00:0' + counter + ' secs' : '00:' + counter + ' secs';
+          console.log('counter', counter)
           this.elementRef.nativeElement.querySelector('.box3 .timer').innerText = counterText;
         });
       }
@@ -119,7 +117,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
 
   playerModificationForFullScreen(){
     this.videoJSplayer.on('fullscreenchange', () => {
-      this.googleAnalyticsEventsService.emitEvent('fanease video', 'fullscreen mode');
+      this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', 'fullscreen mode');
       const overlay_first = this.elementRef.nativeElement.querySelector('.overlay-first-initial');
       const overlay_second = this.elementRef.nativeElement.querySelector('.overlay-second-initial');
       const overlay_third = this.elementRef.nativeElement.querySelector('.overlay-third-initial');
@@ -408,6 +406,10 @@ if(window.innerWidth == 1024){
         this.renderer.removeClass(el, cl);
       }
     });
+  }
+
+  checkIfMobileDevice() {
+    return (this.deviceService.getDeviceInfo().userAgent.match(/iPhone/) != null);
   }
 
   ngOnDestroy() {

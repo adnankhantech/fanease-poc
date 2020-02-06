@@ -13,7 +13,7 @@ export class VideoDescriptionContentComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   showModalPopup() {
     this.showModal = true;
   }
