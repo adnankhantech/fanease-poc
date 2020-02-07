@@ -113,7 +113,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       overlay_content_fourth = `<div class="box4">
       <div class="close">
       <img class="close" src="/assets/images/xfl/close.png"></div>
-      <img src="/assets/images/xfl/xfl-expanded-ad1.png" class="detail-image">
+      <img src="/assets/images/xfl/xfl-expanded-ad1-content
+      .png" class="detail-image">
     </div>`;
 
     overlay_content_fifth = `<div class="box5">
