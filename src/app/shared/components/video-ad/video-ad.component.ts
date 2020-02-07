@@ -201,7 +201,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       debug: true,
       overlays: [
       {
-        start: 5,
+        start: 12,
         content: templateObj.overlay_content_first,
         end: 26,
         align: 'top-right',

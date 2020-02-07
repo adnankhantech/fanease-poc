@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
          <br>
         </div>
         <a class="view">
-            View Bio &nbsp;&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
+        &nbsp; View Bio &nbsp;&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i>
           </a>
       </div>
     </div>`;
