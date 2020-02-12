@@ -71,7 +71,7 @@
   .box-ad-1 .rectangle {
     position: relative;
     width: 195px;
-    height: 154px;
+    height: 150px;
     border-radius: 10px 0px 0px 10px;
     box-shadow: -9px 2px 24px 0 rgba(0, 0, 0, 0.5);
     background-color: #ffffff;
@@ -222,7 +222,7 @@
   .box3 .rectangle {
     position: relative;
     width: 276px;
-    height: 310px;
+    height: 293px;
     background-color: #ffffff;
     // opacity: 0.8;
     border-radius: 10px;
@@ -315,7 +315,7 @@
   
   .buy-ticket{
     margin-left: 43px;
-    margin-top: 10px;
+    margin-top: 0px;
   }
   .box4 .rectangle {
     position: relative;
@@ -646,7 +646,7 @@
   
   .video-js .vjs-overlay-top-right {
     top: 55px;
-    right: 0px;
+    right: 5px;
   }
   
   .detail-image{
@@ -669,10 +669,6 @@
     margin-top: -32px;
   }
   
-  .overlay-third-initial{
-    bottom: 16.5em;
-  }
-  
   .video-section .video-js {
     height: 568px;
   }
@@ -682,7 +678,7 @@
   }
    
   .overlay-third-initial{
-      bottom: 16.5em !important;
+      top: 9px !important;
     }
   
     .overlay-second-initial .rectangle{

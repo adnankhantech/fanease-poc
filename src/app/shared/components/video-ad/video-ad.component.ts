@@ -38,11 +38,13 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       this.calculatePercentageOfVideoWatched();
       this.generateEventsOnVideoPause();
       this.setVideoPlayerSource();
+      this.generatePreviewEventOnVideoPlay();
   }
 
   setVideoPlayerSource(){
     return this.videoJSplayer.src('https://d3bvzl6owxj5uv.cloudfront.net/FanEase_final_preroll.mp4');
   }
+
   calculatePercentageOfVideoWatched() {
     this.videoJSplayer.on('tracking:first-quarter', (e, data) => {
       this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', '25% watched');
@@ -65,11 +67,18 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', 'paused');
     });
   }
+
   generateEventsOnVideoPlay() {
     this.videoJSplayer.on('play', () => {
         this.videoJSInit();
         this.generateClickEvent();
         this.googleAnalyticsEventsService.emitEvent('XFL Roughnecks video', 'play');
+    });
+  }
+
+  generatePreviewEventOnVideoPlay() {
+    this.videoJSplayer.on('play', () => {
+        this.videoPreviewSkipAd();
     });
   }
 
@@ -183,6 +192,15 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
       this.elementRef.nativeElement.querySelector('.box2 .view').addEventListener('click', this.viewDetailAdTwo.bind(this));
   }
 
+  skipVideo() {
+    this.videoJSplayer.src(this.videoSrc);
+    this.showSkipAd =  false;
+    this.videoJSInit();
+    // this.googleAnalyticsEventsService.emitEvent('fanease video', 'skipped');
+    this.videoJSplayer.play();
+    this.generateEventsOnVideoPlay();
+  }
+
   generateDynamicEventsBasedonElement(adv_element_selector, close_element_selector) {
     let advElement = this.elementRef.nativeElement.querySelector(adv_element_selector);
     if (advElement) {
@@ -195,8 +213,24 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
 
   }
 
+  videoPreviewSkipAd() {
+    let templateObj = this.videoAdTemplate;
+    this.videoJSplayer.overlay({
+      debug: true,
+      overlays: [
+      {
+        start: 0,
+        content: this.showSkipAd ? templateObj.overlay_skip_ad : '',
+        align: 'bottom-right',
+        class: 'overlay-skip-ad'
+      }]
+    });
+    this.elementRef.nativeElement.querySelector('.overlay-skip-ad').addEventListener('click', this.skipVideo.bind(this));
+  }
+
   videoJSInit() {
     let templateObj = this.videoAdTemplate;
+    
     this.videoJSplayer.overlay({
       debug: true,
       overlays: [
@@ -218,14 +252,8 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
         start: 57,
         content: templateObj.overlay_content_third,
         end: 67,
-        align: 'bottom-right',
+        align: 'top-right',
         class: 'overlay-third-initial'
-      },
-      {
-        start: 1,
-        content: templateObj.overlay_content_logo,
-        align: 'bottom',
-        class: 'overlay-logo'
       }]
     });
   }
@@ -241,7 +269,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           start: 57,
           content: templateObj.overlay_content_third,
           end: 67,
-          align: 'bottom-right',
+          align: 'top-right',
           class: 'overlay-third-initial'
         }]
     });
@@ -291,7 +319,7 @@ export class VideoAdComponent implements AfterViewInit, OnDestroy {
           start: 57,
           content: templateObj.overlay_content_third,
           end: 67,
-          align: 'bottom-right',
+          align: 'top-right',
           class: 'overlay-third-initial'
         },
         {
@@ -356,7 +384,7 @@ if(window.innerWidth == 1024){
           start: 57,
           content: templateObj.overlay_content_third,
           end: 67,
-          align: 'bottom-right',
+          align: 'top-right',
           class: 'overlay-third-initial'
         },
         {
