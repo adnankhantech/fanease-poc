@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       <div class="close">
           <i class="fa fa-times medium-icon" aria-hidden="true"></i></div>
       <div class="img-wrap">
-      <a  onclick="ga('send', 'event', 'Expanded Ad Two', 'clicked');" href="https://shop.xfl.com/collections/houston-roughnecks/products/houston-impact-1-4-zip-fleece2xl" target="_blank">         
+      <a  onclick="ga('send', 'event', 'Expanded Ad Two', 'clicked');" href="https://shop.xfl.com/collections/houston-roughnecks" target="_blank">         
       </div>
           <div class="img-wrap">
               <div class="logo-container">
